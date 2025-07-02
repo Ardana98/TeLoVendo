@@ -37,25 +37,52 @@
     </aside>
 
     <main class="main-content">
-        <section class="catalog-page-section">
+        <section class="catalog-section">
             <div class="container">
-                <h1>Nuestro Catálogo de Productos</h1>
-                <p>Explora nuestra selección de electrónicos reacondicionados por categoría.</p>
+                <h1>Nuestro Catálogo</h1>
+
                 <div class="filter-buttons">
-                    <button class="filter-button active" data-filter="all">Todos</button>
-                    <button class="filter-button" data-filter="celulares">Celulares</button>
-                    <button class="filter-button" data-filter="tablets">Tablets</button>
-                    <button class="filter-button" data-filter="relojes">Relojes</button>
-                    <button class="filter-button" data-filter="laptops">Laptops</button>
+                    <button class="filter-button button button--secondary active" data-category="todos">Todos</button>
+                    <button class="filter-button button button--secondary" data-category="celulares">Celulares</button>
+                    <button class="filter-button button button--secondary" data-category="tablets">Tablets</button>
+                    <button class="filter-button button button--secondary" data-category="laptops">Laptops</button>
+                    <button class="filter-button button button--secondary"
+                        data-category="smartwatch">Smartwatch</button>
                 </div>
 
-                <div class="products__grid">
-                    <div class="product-card">
-                        <img src="assets/img/placeholder.jpg" alt="Producto de ejemplo" class="product-card__image">
-                        <h3 class="product-card__name">Producto Catálogo 1</h3>
-                        <p class="product-card__price">$XXX.XXX</p>
-                        <button class="product-card__button button button--secondary">Ver Detalle</button>
+                <div class="products__grid" id="productsGrid">
+                    <div class="product-card" data-category="celulares">
+                        <img src="assets/img/placeholder.jpg" alt="Smartphone Pro X" class="product-card__image">
+                        <h3 class="product-card__name">Smartphone Pro X</h3>
+                        <p class="product-card__price">$599.990</p>
+                        <button class="product-card__button button button--secondary"
+                            data-product-id="prod-smartphone-001">Ver Detalle</button>
                     </div>
+
+                    <div class="product-card" data-category="tablets">
+                        <img src="assets/img/placeholder.jpg" alt="Tablet Advance" class="product-card__image">
+                        <h3 class="product-card__name">Tablet Advance</h3>
+                        <p class="product-card__price">$349.990</p>
+                        <button class="product-card__button button button--secondary"
+                            data-product-id="prod-tablet-001">Ver Detalle</button>
+                    </div>
+
+                    <div class="product-card" data-category="laptops">
+                        <img src="assets/img/placeholder.jpg" alt="Laptop Gaming Core" class="product-card__image">
+                        <h3 class="product-card__name">Laptop Gaming Core</h3>
+                        <p class="product-card__price">$1.299.990</p>
+                        <button class="product-card__button button button--secondary"
+                            data-product-id="prod-laptop-002">Ver Detalle</button>
+                    </div>
+
+                    <div class="product-card" data-category="smartwatch">
+                        <img src="assets/img/placeholder.jpg" alt="Smartwatch Fit Pro" class="product-card__image">
+                        <h3 class="product-card__name">Smartwatch Fit Pro</h3>
+                        <p class="product-card__price">$199.990</p>
+                        <button class="product-card__button button button--secondary"
+                            data-product-id="prod-smartwatch-001">Ver Detalle</button>
+                    </div>
+
                 </div>
             </div>
         </section>
