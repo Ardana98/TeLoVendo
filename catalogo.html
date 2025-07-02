@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Te lo Vendo</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    </head>
+</head>
+
 <body>
     <header class="main-header">
         <div class="container">
@@ -28,7 +30,8 @@
             <ul class="sidebar-nav__list">
                 <li class="sidebar-nav__item"><a href="index.html" class="sidebar-nav__link">Inicio</a></li>
                 <li class="sidebar-nav__item"><a href="catalogo.html" class="sidebar-nav__link">Catálogo</a></li>
-                <li class="sidebar-nav__item"><a href="acerca.html" class="sidebar-nav__link">Acerca del Proyecto</a></li>
+                <li class="sidebar-nav__item"><a href="acerca.html" class="sidebar-nav__link">Acerca del Proyecto</a>
+                </li>
             </ul>
         </nav>
     </aside>
@@ -44,7 +47,7 @@
                     <button class="filter-button" data-filter="tablets">Tablets</button>
                     <button class="filter-button" data-filter="relojes">Relojes</button>
                     <button class="filter-button" data-filter="laptops">Laptops</button>
-                    </div>
+                </div>
 
                 <div class="products__grid">
                     <div class="product-card">
@@ -64,7 +67,30 @@
             <p>Diseñado con pasión por [Daniela Rodríguez]</p>
         </div>
     </footer>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button">&times;</span>
+            <div class="modal-body">
+                <img src="assets/img/placeholder.jpg" alt="Imagen del Producto" class="modal-image">
+                <div class="modal-details">
+                    <h3 class="modal-title">Nombre del Producto</h3>
+                    <p class="modal-price">$999.990</p>
+                    <p class="modal-description">Aquí va una descripción detallada del producto. Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.</p>
+                    <ul class="modal-specs">
+                        <li>**Especificación 1:** Detalle técnico</li>
+                        <li>**Especificación 2:** Otra característica</li>
+                        <li>**Condición:** Reacondicionado</li>
+                    </ul>
+                    <button class="button button--primary modal-add-to-cart">Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

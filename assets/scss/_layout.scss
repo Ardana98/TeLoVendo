@@ -92,7 +92,7 @@
     padding: $spacing-large 0;
 }
 
-.main-footer { // <--- ¡ESTE BLOQUE TE FALTA!
+.main-footer { // <--- ¡ESTE BLOQUE FALTA!
     background-color: $color-primary-text; // Fondo oscuro para el footer
     color: $color-white;
     padding: $spacing-medium 0;
@@ -103,6 +103,9 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-x-small;
+        align-items: center; // Centra horizontalmente los ítems en una columna
+        justify-content: center; // Centra verticalmente los ítems si hay espacio extra (útil para contenido corto)
+        width: 100%; // Asegura que el contenedor ocupe todo el ancho
     }
 }
 

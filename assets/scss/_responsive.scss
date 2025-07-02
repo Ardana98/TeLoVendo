@@ -10,7 +10,7 @@
         background-color: $color-primary-text; // Mismo color que el header
         color: $color-white;
         padding: $spacing-medium;
-        box-shadow: -2px 0 5px $color-shadow-medium; // Sombra para efecto 3D
+        box-shadow: -2px 0 5px $box-shadow-medium; // Sombra para efecto 3D
         transition: right $transition-speed $transition-ease; // Transición suave al aparecer/desaparecer
         z-index: 1000; // Asegura que esté encima de todo
 
