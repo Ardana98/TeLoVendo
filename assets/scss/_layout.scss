@@ -4,24 +4,14 @@
     background-color: $color-primary-text; // Fondo oscuro para el header
     padding: $spacing-small 0;
     color: $color-white; // Texto blanco en el header
-    @media (max-width: 768px) { // Punto de quiebre para móvil
-        .main-nav {
-            display: none; // Oculta la navegación principal en pantallas pequeñas
-        }
 
-        .menu-toggle {
-            display: block; // Muestra el botón de hamburguesa
-            margin-left: auto; // Empuja el botón a la derecha
-        }
-    }
-
-    .container {
+    .container { // Este bloque está bien aquí
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    &__logo {
+    &__logo { // Este bloque está bien aquí
         font-size: $font-size-h3;
         font-weight: bold;
         color: $color-white;
@@ -31,7 +21,7 @@
         }
     }
 
-    .main-nav {
+    .main-nav { // Este bloque está bien aquí
         &__list {
             display: flex;
         }
@@ -54,7 +44,7 @@
     }
 
     // Estilos para el botón de hamburguesa (visible en móvil)
-    .menu-toggle {
+    .menu-toggle { // <-- ¡ESTE BLOQUE DEBE ESTAR AQUÍ ANTES DEL MEDIA QUERY!
         display: none; // Por defecto oculto en desktop
         background: none;
         border: none;
@@ -82,14 +72,27 @@
             &::after { top: 8px; }
         }
     }
+
+    // AHORA, el media query SÍ puede venir después para SOBREESCRIBIR el display
+    @media (max-width: 768px) {
+        .main-nav {
+            display: none; // Oculta la navegación principal en pantallas pequeñas
+        }
+
+        .menu-toggle {
+            display: block; // Muestra el botón de hamburguesa cuando la pantalla es pequeña
+            margin-left: auto; // Empuja el botón a la derecha
+            
+        }
+    }
 }
 
-
+// ... el resto de mi _layout.scss sigue igual ...
 .main-content {
-    padding: $spacing-large 0; // Espaciado superior e inferior para el contenido principal
+    padding: $spacing-large 0;
 }
 
-.main-footer {
+.main-footer { // <--- ¡ESTE BLOQUE TE FALTA!
     background-color: $color-primary-text; // Fondo oscuro para el footer
     color: $color-white;
     padding: $spacing-medium 0;
