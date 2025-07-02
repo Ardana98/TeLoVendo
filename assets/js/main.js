@@ -56,14 +56,58 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add('active');
         }
     });
+    // --- Lógica del Modal de Detalle de Producto ---
+    const productModal = document.getElementById('productModal');
+    const modalCloseButton = document.querySelector('.modal-close-button');
+    // Seleccionar todos los botones "Ver Detalle". ¡Asegurarse de que los botones de producto tengan esta clase!
+    const viewDetailButtons = document.querySelectorAll('.product-card__button'); 
 
-    // --- Lógica para el modal de producto (preparación futura) ---
-    // Dejo un placeholder aquí para la lógica del modal que haré más adelante.
-    // const productButtons = document.querySelectorAll('.product-card__button');
-    // productButtons.forEach(button => {
-    //     button.addEventListener('click', (e) => {
-    //         // Lógica para abrir el modal de producto
-    //         console.log('Botón Ver Detalle clicado para:', e.target.closest('.product-card').querySelector('.product-card__name').textContent);
-    //     });
-    // });
+    // Solo si el modal y los botones existen en la página
+    if (productModal && modalCloseButton && viewDetailButtons.length > 0) {
+        // Función para abrir el modal
+        function openModal() {
+            productModal.classList.add('modal--active');
+            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+            // Opcional: Si tengo un overlay para el sidebar, asegurar de que no interfiera.
+            // Si el overlay del sidebar ya está activo, no necesito activar otro.
+            // Si no lo está, y quiero un overlay para el modal, aquí podré añadir 'overlay.classList.add('overlay--active');'
+            // Sin embargo, el modal ya tiene su propio fondo oscuro.
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            productModal.classList.remove('modal--active');
+            document.body.style.overflow = ''; // Restaura el scroll del fondo
+            // Opcional: Si el overlay del sidebar se activó con el modal, se desactiva aquí.
+            // overlay.classList.remove('overlay--active');
+        }
+
+        // Abrir modal al hacer clic en "Ver Detalle"
+        viewDetailButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Evita que si el botón es un enlace, navegue.
+                // Aquí se podrá añadir lógica para cargar contenido dinámico del producto
+                // Por ahora, solo abrimos el modal
+                openModal();
+            });
+        });
+
+        // Cerrar modal al hacer clic en el botón de cerrar (X)
+        modalCloseButton.addEventListener('click', closeModal);
+
+        // Cerrar modal al hacer clic fuera del contenido del modal (en el fondo oscuro)
+        productModal.addEventListener('click', (event) => {
+            if (event.target === productModal) { // Solo si el clic es directamente en el fondo del modal
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && productModal.classList.contains('modal--active')) {
+                closeModal();
+            }
+        });
+    } // Fin del if (productModal...)
+    
 });
