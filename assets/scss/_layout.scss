@@ -4,6 +4,16 @@
     background-color: $color-primary-text; // Fondo oscuro para el header
     padding: $spacing-small 0;
     color: $color-white; // Texto blanco en el header
+    @media (max-width: 768px) { // Punto de quiebre para móvil
+        .main-nav {
+            display: none; // Oculta la navegación principal en pantallas pequeñas
+        }
+
+        .menu-toggle {
+            display: block; // Muestra el botón de hamburguesa
+            margin-left: auto; // Empuja el botón a la derecha
+        }
+    }
 
     .container {
         display: flex;
