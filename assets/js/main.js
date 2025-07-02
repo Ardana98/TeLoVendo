@@ -110,4 +110,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } // Fin del if (productModal...)
     
+ // --- Lógica de Filtrado de Productos por Categoría (Catálogo) ---
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const productCards = document.querySelectorAll('.product-card');
+
+    if (filterButtons.length > 0 && productCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 1. Quitar 'active' de todos los botones de filtro
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // 2. Añadir 'active' al botón clicado
+                button.classList.add('active');
+
+                // 3. Obtener la categoría del botón clicado
+                const category = button.dataset.category; // Usamos .dataset para data-category
+
+                // 4. Mostrar u ocultar tarjetas de producto
+                productCards.forEach(card => {
+                    if (category === 'todos') {
+                        card.style.display = 'block'; // Muestra todas las tarjetas
+                    } else {
+                        // Si la categoría de la tarjeta coincide con la categoría del botón
+                        if (card.dataset.category === category) {
+                            card.style.display = 'block'; // Muestra la tarjeta
+                        } else {
+                            card.style.display = 'none'; // Oculta la tarjeta
+                        }
+                    }
+                });
+            });
+        });
+    }
+
+    
 });
