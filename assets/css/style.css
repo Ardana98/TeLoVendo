@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #0F1111;
+  background-color: #FFFFFF;
+}
+
+a {
+  color: #007185;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Amazon Ember", "Helvetica Neue", sans-serif;
+  margin-bottom: 12px;
+  color: #0F1111;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-header {
+  background-color: #0F1111;
+  padding: 12px 0;
+  color: #FFFFFF;
+}
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-header__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.main-header__logo:hover {
+  color: #FF9900;
+}
+.main-header .main-nav__list {
+  display: flex;
+}
+.main-header .main-nav__item {
+  margin-left: 32px;
+}
+.main-header .main-nav__link {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+.main-header .main-nav__link:hover, .main-header .main-nav__link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.main-header .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.main-header .menu-toggle__icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #FFFFFF;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+}
+.main-header .menu-toggle__icon::before, .main-header .menu-toggle__icon::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #FFFFFF;
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+}
+.main-header .menu-toggle__icon::before {
+  top: -8px;
+}
+.main-header .menu-toggle__icon::after {
+  top: 8px;
+}
+
+.main-content {
+  padding: 32px 0;
+}
+
+.main-footer {
+  background-color: #0F1111;
+  color: #FFFFFF;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.875rem;
+}
+.main-footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-section {
+  background-color: #F0F2F2;
+  padding: 64px 0;
+  text-align: center;
+}
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.hero-section p {
+  font-size: 1.125rem;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featured-products-section, .catalog-page-section, .about-page-section {
+  padding: 32px 0;
+}
+.featured-products-section h2, .catalog-page-section h2, .about-page-section h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 2rem;
+}
+
+.button, .filter-buttons .filter-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
+  font-size: 16px;
+}
+.button--primary {
+  background-color: #FF9900;
+  color: #0F1111;
+  border-color: #FF9900;
+}
+.button--primary:hover {
+  background-color: rgb(204, 122.4, 0);
+  border-color: rgb(204, 122.4, 0);
+  color: #0F1111;
+}
+.button--secondary, .filter-buttons .filter-button {
+  background-color: #F0F2F2;
+  color: #0F1111;
+  border-color: #D5DBDB;
+}
+.button--secondary:hover, .filter-buttons .filter-button:hover {
+  background-color: rgb(226.3392857143, 230.1607142857, 230.1607142857);
+  border-color: rgb(199.2692307692, 207.2307692308, 207.2307692308);
+}
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.product-card {
+  background-color: #FFFFFF;
+  border: 1px solid #D5DBDB;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
+}
+.product-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.product-card__name {
+  font-size: 1.125rem;
+  margin-bottom: 4px;
+  padding: 0 12px;
+}
+.product-card__price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007185;
+  margin-bottom: 20px;
+}
+.product-card__button {
+  margin-top: 12px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.filter-buttons .filter-button.active {
+  background-color: #007185;
+  color: #FFFFFF;
+  border-color: #007185;
+}
+
+/*# sourceMappingURL=style.css.map */

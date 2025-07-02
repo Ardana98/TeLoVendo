@@ -1,0 +1,95 @@
+// assets/scss/_components.scss
+
+.button {
+    display: inline-block;
+    padding: $spacing-small $spacing-medium;
+    border-radius: $border-radius-small;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all $transition-speed $transition-ease;
+    border: 1px solid transparent; // Borde por defecto transparente
+    font-size: $font-size-base;
+
+    &--primary {
+        background-color: $color-amazon-orange;
+        color: $color-primary-text; // Texto oscuro sobre naranja
+        border-color: $color-amazon-orange;
+
+        &:hover {
+            background-color: darken($color-amazon-orange, 10%);
+            border-color: darken($color-amazon-orange, 10%);
+            color: $color-primary-text;
+        }
+    }
+
+    &--secondary {
+        background-color: $color-light-grey;
+        color: $color-primary-text;
+        border-color: $color-border-grey;
+
+        &:hover {
+            background-color: darken($color-light-grey, 5%);
+            border-color: darken($color-border-grey, 5%);
+        }
+    }
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Responsive grid
+    gap: $spacing-large; // Espacio entre tarjetas
+}
+
+.product-card {
+    background-color: $color-white;
+    border: 1px solid $color-border-grey;
+    border-radius: $border-radius-medium;
+    overflow: hidden; // Para que la imagen no se salga
+    text-align: center;
+    box-shadow: 0 2px 4px $color-shadow-light;
+    padding-bottom: $spacing-medium; // Espacio abajo del texto
+
+    &__image {
+        width: 100%;
+        height: 200px; // Altura fija para las imágenes
+        object-fit: cover; // Asegura que la imagen cubra el espacio sin distorsionarse
+        margin-bottom: $spacing-small;
+    }
+
+    &__name {
+        font-size: $font-size-large;
+        margin-bottom: $spacing-xx-small;
+        padding: 0 $spacing-small; // Padding para el texto del nombre
+    }
+
+    &__price {
+        font-size: $font-size-h3;
+        font-weight: bold;
+        color: $color-amazon-dark-blue; // Precio en azul de Amazon
+        margin-bottom: $spacing-medium;
+    }
+
+    &__button {
+        margin-top: $spacing-small;
+    }
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; // Por si hay muchos botones en móvil
+    gap: $spacing-small;
+    margin-bottom: $spacing-large;
+
+    .filter-button {
+        @extend .button; // Reutiliza estilos base de .button
+        @extend .button--secondary; // Y sus estilos secundarios
+
+        &.active {
+            background-color: $color-amazon-dark-blue; // Color de botón activo
+            color: $color-white;
+            border-color: $color-amazon-dark-blue;
+        }
+    }
+}

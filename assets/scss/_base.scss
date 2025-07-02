@@ -1,0 +1,39 @@
+// assets/scss/_base.scss
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-primary;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    color: $color-primary-text;
+    background-color: $color-white;
+}
+
+a {
+    color: $color-amazon-dark-blue;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-secondary;
+    margin-bottom: $spacing-small;
+    color: $color-primary-text;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-medium; // Padding lateral para que no se pegue a los bordes
+}
