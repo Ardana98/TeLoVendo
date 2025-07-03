@@ -11,7 +11,10 @@ body {
     font-size: $font-size-base;
     line-height: 1.6;
     color: $color-primary-text;
-    background-color: $color-white;
+    background-color: $color-background-light;
+    margin: 0; // Importante para quitar el margen por defecto del body
+    box-sizing: border-box; // Asegura que padding y border se incluyan en el ancho/alto
+
 }
 
 a {

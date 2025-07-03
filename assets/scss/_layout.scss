@@ -12,16 +12,26 @@
     }
 
     &__logo { // Este bloque está bien aquí
-        font-size: $font-size-h3;
+        /* font-size: $font-size-h3;
         font-weight: bold;
-        color: $color-white;
+        color: $color-white; */
         text-decoration: none;
         &:hover {
             color: $color-amazon-orange; // Logo cambia de color al pasar el ratón
         }
+         // Estilos para el contenedor del logo (el <a>) si los necesitas
+        display: flex; // Para alinear la imagen verticalmente si es necesario
+        align-items: center; // Centra verticalmente la imagen dentro del enlace
+        height: 100%; // Asegura que el enlace ocupe toda la altura del header para la alineación
+    }
+    &__logo-img { // NUEVA REGLA PARA LA IMAGEN DEL LOGO
+        height: 60px; // Altura fija para el logo (ajusta según el tamaño de tu logo y header)
+        width: auto; // Mantiene la proporción de la imagen
+        max-width: 150px; // Opcional: para que no sea demasiado ancho en pantallas grandes
     }
 
-    .main-nav { // Este bloque está bien aquí
+
+    .main-nav { // Este bloque está BIEN AQUÍ (dentro de .main-header)
         &__list {
             display: flex;
         }
@@ -44,7 +54,7 @@
     }
 
     // Estilos para el botón de hamburguesa (visible en móvil)
-    .menu-toggle { // <-- ¡ESTE BLOQUE DEBE ESTAR AQUÍ ANTES DEL MEDIA QUERY!
+    .menu-toggle { // ESTE BLOQUE ESTÁ BIEN AQUÍ (dentro de .main-header)
         display: none; // Por defecto oculto en desktop
         background: none;
         border: none;
@@ -85,14 +95,15 @@
             
         }
     }
-}
+} // <--- ¡ESTE ES EL ÚNICO CIERRE DE .main-header!
 
 // ... el resto de mi _layout.scss sigue igual ...
 .main-content {
-    padding: $spacing-large 0;
+   padding-top: 0; // <-- CAMBIO CLAVE AQUÍ: Esto elimina el espacio blanco superior
+    padding-bottom: $spacing-large;
 }
 
-.main-footer { // <--- ¡ESTE BLOQUE FALTA!
+.main-footer {
     background-color: $color-primary-text; // Fondo oscuro para el footer
     color: $color-white;
     padding: $spacing-medium 0;
@@ -111,13 +122,20 @@
 
 // Estilos para secciones específicas (ej. Hero, Featured Products)
 .hero-section {
-    background-color: $color-light-grey; // Un fondo suave para el hero
+    /* background-color: $color-light-grey; // Un fondo suave para el hero */
+    background-image: url('../img/herob3.jpg'); // <-- ¡NUEVA LÍNEA AQUÍ! Cambia la ruta y nombre
+    background-size: cover; // La imagen cubrirá todo el área del hero
+    background-position: center; // Centra la imagen
+    background-repeat: no-repeat; // Evita que la imagen se repita
+    background-attachment: fixed; // Opcional: la imagen se queda fija al hacer scroll (efecto parallax)
+
     padding: $spacing-xx-large 0;
     text-align: center;
 
     h1 {
         font-size: $font-size-h1;
         margin-bottom: $spacing-medium;
+        color: inherit; // Hereda el color del padre (que ahora es $color-white)
     }
     p {
         font-size: $font-size-large;
@@ -125,6 +143,24 @@
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+        color: inherit; // Hereda el color del padre
+    }
+    // Puedes añadir un overlay oscuro semi-transparente para mejorar la legibilidad del texto
+    position: relative; // Necesario para posicionar el overlay
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background-color: rgba(0, 0, 0, 0.5); // Overlay negro semi-transparente 
+        z-index: 1; // Asegura que el overlay esté sobre la imagen
+    }
+    // Asegura que el contenido (h1, p, button) esté sobre el overlay
+    .container {
+        position: relative;
+        z-index: 2;
     }
 }
 
