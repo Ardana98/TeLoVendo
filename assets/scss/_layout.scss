@@ -136,3 +136,18 @@
         font-size: $font-size-h2;
     }
 }
+
+/* --- Sección del Banner Promocional --- */
+.promo-banner-section {
+    padding: $spacing-large 0; // Espacio superior e inferior
+    text-align: center; // Para centrar la imagen si es más pequeña que el contenedor
+
+    .promo-banner__image {
+        max-width: 100%; // Asegura que no se desborde del contenedor
+        height: auto; // Mantiene la proporción de la imagen
+        display: block; // Elimina el espacio extra debajo de las imágenes (si fuera inline)
+        margin: 0 auto; // Centra la imagen horizontalmente
+        border-radius: $border-radius-medium; // Opcional: bordes redondeados
+        box-shadow: 0 4px 8px $box-shadow-small; // Opcional: sombra para que resalte
+    }
+}

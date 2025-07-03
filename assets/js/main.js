@@ -57,91 +57,121 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     // --- Lógica del Modal de Detalle de Producto ---
-    const productModal = document.getElementById('productModal');
-    const modalCloseButton = document.querySelector('.modal-close-button');
-    // Seleccionar todos los botones "Ver Detalle". ¡Asegurarse de que los botones de producto tengan esta clase!
-    const viewDetailButtons = document.querySelectorAll('.product-card__button'); 
+const productModal = document.getElementById('productModal');
+const modalCloseButton = document.querySelector('.modal-close-button');
+const viewDetailButtons = document.querySelectorAll('.product-card__button');
 
-    // Solo si el modal y los botones existen en la página
-    if (productModal && modalCloseButton && viewDetailButtons.length > 0) {
-        // Función para abrir el modal
-        function openModal() {
-            productModal.classList.add('modal--active');
-            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
-            // Opcional: Si tengo un overlay para el sidebar, asegurar de que no interfiera.
-            // Si el overlay del sidebar ya está activo, no necesito activar otro.
-            // Si no lo está, y quiero un overlay para el modal, aquí podré añadir 'overlay.classList.add('overlay--active');'
-            // Sin embargo, el modal ya tiene su propio fondo oscuro.
-        }
+// Referencias a los elementos dentro del modal para rellenar dinámicamente
+const modalImage = productModal.querySelector('.modal-image');
+const modalTitle = productModal.querySelector('.modal-title');
+const modalPrice = productModal.querySelector('.modal-price');
+const modalDescription = productModal.querySelector('.modal-description'); // Mantendremos estática por ahora
+const modalSpecs = productModal.querySelector('.modal-specs'); // Mantendremos estática por ahora
 
-        // Función para cerrar el modal
-        function closeModal() {
-            productModal.classList.remove('modal--active');
-            document.body.style.overflow = ''; // Restaura el scroll del fondo
-            // Opcional: Si el overlay del sidebar se activó con el modal, se desactiva aquí.
-            // overlay.classList.remove('overlay--active');
-        }
+if (productModal && modalCloseButton && viewDetailButtons.length > 0) {
+    // Función para abrir el modal
+    function openModal(productData) { // Ahora recibe datos del producto
+        // Rellenar el modal con la información del producto
+        modalImage.src = productData.imageSrc;
+        modalImage.alt = productData.imageAlt;
+        modalTitle.textContent = productData.name;
+        modalPrice.textContent = productData.price;
+        // La descripción y specs quedan estáticas por ahora, o podrías tomarlas de un atributo data- en la card si existiera
+        // modalDescription.textContent = productData.description;
+        // modalSpecs.innerHTML = productData.specsHtml; // Si quieres poner specs, deberían ser un HTML
 
-        // Abrir modal al hacer clic en "Ver Detalle"
-        viewDetailButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault(); // Evita que si el botón es un enlace, navegue.
-                // Aquí se podrá añadir lógica para cargar contenido dinámico del producto
-                // Por ahora, solo abrimos el modal
-                openModal();
-            });
-        });
-
-        // Cerrar modal al hacer clic en el botón de cerrar (X)
-        modalCloseButton.addEventListener('click', closeModal);
-
-        // Cerrar modal al hacer clic fuera del contenido del modal (en el fondo oscuro)
-        productModal.addEventListener('click', (event) => {
-            if (event.target === productModal) { // Solo si el clic es directamente en el fondo del modal
-                closeModal();
-            }
-        });
-
-        // Cerrar modal con la tecla Escape
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && productModal.classList.contains('modal--active')) {
-                closeModal();
-            }
-        });
-    } // Fin del if (productModal...)
-    
- // --- Lógica de Filtrado de Productos por Categoría (Catálogo) ---
-    const filterButtons = document.querySelectorAll('.filter-button');
-    const productCards = document.querySelectorAll('.product-card');
-
-    if (filterButtons.length > 0 && productCards.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 1. Quitar 'active' de todos los botones de filtro
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-
-                // 2. Añadir 'active' al botón clicado
-                button.classList.add('active');
-
-                // 3. Obtener la categoría del botón clicado
-                const category = button.dataset.category; // Usamos .dataset para data-category
-
-                // 4. Mostrar u ocultar tarjetas de producto
-                productCards.forEach(card => {
-                    if (category === 'todos') {
-                        card.style.display = 'block'; // Muestra todas las tarjetas
-                    } else {
-                        // Si la categoría de la tarjeta coincide con la categoría del botón
-                        if (card.dataset.category === category) {
-                            card.style.display = 'block'; // Muestra la tarjeta
-                        } else {
-                            card.style.display = 'none'; // Oculta la tarjeta
-                        }
-                    }
-                });
-            });
-        });
+        productModal.classList.add('modal--active');
+        document.body.style.overflow = 'hidden';
     }
 
+    // Función para cerrar el modal
+    function closeModal() {
+        productModal.classList.remove('modal--active');
+        document.body.style.overflow = '';
+    }
+
+    // Abrir modal al hacer clic en "Ver Detalle"
+    viewDetailButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            // Obtener la tarjeta de producto padre del botón clicado
+            const productCard = button.closest('.product-card');
+            if (productCard) {
+                // Extraer la información de la tarjeta
+                const imageElement = productCard.querySelector('.product-card__image');
+                const nameElement = productCard.querySelector('.product-card__name');
+                const priceElement = productCard.querySelector('.product-card__price');
+
+                const productData = {
+                    imageSrc: imageElement ? imageElement.src : 'assets/img/placeholder.jpg',
+                    imageAlt: imageElement ? imageElement.alt : 'Imagen de Producto',
+                    name: nameElement ? nameElement.textContent : 'Producto Desconocido',
+                    price: priceElement ? priceElement.textContent : '$XXX.XXX'
+                };
+
+                openModal(productData);
+            } else {
+                // Si por alguna razón no encuentra la tarjeta padre, abre el modal con placeholder
+                openModal({
+                    imageSrc: 'assets/img/placeholder.jpg',
+                    imageAlt: 'Producto',
+                    name: 'Producto sin Información',
+                    price: '$0'
+                });
+            }
+        });
+    });
+
+    // Cerrar modal al hacer clic en el botón de cerrar (X)
+    modalCloseButton.addEventListener('click', closeModal);
+
+    // Cerrar modal al hacer clic fuera del contenido del modal
+    productModal.addEventListener('click', (event) => {
+        if (event.target === productModal) {
+            closeModal();
+        }
+    });
+
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && productModal.classList.contains('modal--active')) {
+            closeModal();
+        }
+    });
+}
+
+// --- Lógica de Filtrado de Productos por Categoría (Catálogo) ---
+const filterButtons = document.querySelectorAll('.filter-button');
+const productCards = document.querySelectorAll('.product-card');
+
+if (filterButtons.length > 0 && productCards.length > 0) {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 1. Quitar 'active' de todos los botones de filtro
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // 2. Añadir 'active' al botón clicado
+            button.classList.add('active');
+
+            // 3. Obtener la categoría del botón clicado
+            const category = button.dataset.category; // Usamos .dataset para data-category
+
+            // 4. Mostrar u ocultar tarjetas de producto
+            productCards.forEach(card => {
+                if (category === 'todos') {
+                    card.style.display = 'block'; // Muestra todas las tarjetas
+                } else {
+                    // Si la categoría de la tarjeta coincide con la categoría del botón
+                    if (card.dataset.category === category) {
+                        card.style.display = 'block'; // Muestra la tarjeta
+                    } else {
+                        card.style.display = 'none'; // Oculta la tarjeta
+                    }
+                }
+            });
+        });
+    });
+}
     
 });
