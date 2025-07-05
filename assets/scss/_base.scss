@@ -1,22 +1,35 @@
 // assets/scss/_base.scss
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// Aplicar box-sizing: border-box a todos los elementos globalmente.
+// Esto es una buena práctica y simplifica el layout.
+// Ya lo tenía en '*', pero es más robusto si lo hereda del html.
+html {
+    height: 100%; // ¡Clave para el sticky footer! Asegura que el html ocupe toda la altura
+    box-sizing: border-box; // Define el box-sizing en la raíz
+}
+
+*, *::before, *::after {
+    box-sizing: inherit; // Hace que todos los elementos hereden el box-sizing del html
 }
 
 body {
+    // Propiedades generales del body
     font-family: $font-family-primary;
     font-size: $font-size-base;
     line-height: 1.6;
     color: $color-primary-text;
     background-color: $color-background-light;
-    margin: 0; // Importante para quitar el margen por defecto del body
-    box-sizing: border-box; // Asegura que padding y border se incluyan en el ancho/alto
+    margin: 0; // Quita el margen por defecto del body
+    // NOTA: 'box-sizing: border-box;' ya no es necesario aquí en el body,
+    // porque está cubierto por la regla universal `* { box-sizing: inherit; }`
 
+    // Propiedades para el "Sticky Footer" con Flexbox
+    display: flex;         // Convierte el body en un contenedor flex
+    flex-direction: column; // Apila los hijos (header, main, footer) verticalmente
+    min-height: 100vh;     // Asegura que el body tenga al menos la altura completa del viewport
 }
 
+// Estilos de elementos HTML básicos
 a {
     color: $color-amazon-dark-blue;
     text-decoration: none;
@@ -29,14 +42,40 @@ ul {
     list-style: none;
 }
 
+// Estilos para encabezados (h1, h2, etc.)
+h1 {
+    font-size: $font-size-h1; 
+}
+h2 {
+    font-size: $font-size-h2; 
+}
+
+h3 {
+    font-size: $font-size-h3; 
+}
+
+h4 {
+    font-size: $font-size-h4; 
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-family-secondary;
     margin-bottom: $spacing-small;
     color: $color-primary-text;
 }
 
+// Estilo para el contenedor centralizado (usado en la mayoría de las secciones)
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 $spacing-medium; // Padding lateral para que no se pegue a los bordes
+}
+
+// Esta regla es CRUCIAL para el "Sticky Footer".
+// Debe aplicarse al elemento que contiene el contenido principal y lo "empujará"
+// para que ocupe todo el espacio disponible.
+.main-content {
+    flex-grow: 1; // Permite que .main-content ocupe todo el espacio vertical restante
+    padding-bottom: $spacing-large; // Mantenemos padding-bottom existente
+    
 }

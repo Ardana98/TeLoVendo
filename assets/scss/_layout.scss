@@ -177,6 +177,11 @@
 .promo-banner-section {
     padding: $spacing-large 0; // Espacio superior e inferior
     text-align: center; // Para centrar la imagen si es más pequeña que el contenedor
+    /* background-image: url('../img/full-tecnologia-122823.jpeg'); // <-- ¡Aquí va la imagen!
+    background-size: cover;      // La imagen cubrirá todo el área, recortando si es necesario
+    background-position: center; // Centra la imagen
+    background-repeat: no-repeat; // Evita que la imagen se repita
+    min-height: 250px;    */        // Dale una altura mínima para que el banner sea visible. ¡Ajusta este valor!
 
     .promo-banner__image {
         max-width: 100%; // Asegura que no se desborde del contenedor
