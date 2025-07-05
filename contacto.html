@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Te lo Vendo - Electrónica Reacondicionada</title>
+    <title>Contacto - Te lo Vendo</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -16,10 +16,10 @@
             </a>
             <nav class="main-nav">
                 <ul class="main-nav__list">
-                    <li class="main-nav__item"><a href="index.html" class="main-nav__link active">Inicio</a></li>
+                    <li class="main-nav__item"><a href="index.html" class="main-nav__link">Inicio</a></li>
                     <li class="main-nav__item"><a href="catalogo.html" class="main-nav__link">Catálogo</a></li>
                     <li class="main-nav__item"><a href="acerca.html" class="main-nav__link">Acerca del Proyecto</a></li>
-                    <li class="main-nav__item"><a href="contacto.html" class="main-nav__link">Contacto</a></li>
+                    <li class="main-nav__item"><a href="contacto.html" class="main-nav__link active">Contacto</a></li>
                 </ul>
             </nav>
             <button class="menu-toggle" aria-label="Abrir menú">
@@ -33,50 +33,53 @@
             <ul class="sidebar-nav__list">
                 <li class="sidebar-nav__item"><a href="index.html" class="sidebar-nav__link">Inicio</a></li>
                 <li class="sidebar-nav__item"><a href="catalogo.html" class="sidebar-nav__link">Catálogo</a></li>
-                <li class="sidebar-nav__item"><a href="acerca.html" class="sidebar-nav__link">Acerca del Proyecto</a>
-                </li>
+                <li class="sidebar-nav__item"><a href="acerca.html" class="sidebar-nav__link">Acerca del Proyecto</a></li>
+                <li class="sidebar-nav__item"><a href="contacto.html" class="sidebar-nav__link">Contacto</a></li>
             </ul>
         </nav>
     </aside>
-    <main class="main-content">
-        <section class="hero-section">
-            <div class="container">
-                <h1>Bienvenido a Te lo Vendo</h1>
-                <p>Tu destino para electrónica reacondicionada de calidad a precios increíbles.</p>
-                <a href="catalogo.html" class="button button--primary">Explora el Catálogo</a>
-            </div>
-        </section>
-        <section class="promo-banner-section">
-            <div class="container">
-                <img src="assets/img/full-tecnologia-122823.jpeg"
-                    alt="Full Tecnología - Hasta 50% de descuento en equipos reacondicionados"
-                    class="promo-banner__image">
-            </div>
-        </section>
-        <section class="featured-products-section">
-            <div class="container">
-                <h2>Novedades y Destacados</h2>
-                <div class="products__grid">
-                    <div class="product-card">
-                        <img src="assets/img/mair.jpg" alt="Producto de ejemplo MacBook Air M2"
-                            class="product-card__image">
-                        <h3 class="product-card__name">MacBook Air M2</h3>
-                        <p class="product-card__price">$799.990</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-laptop-001">Ver Detalle</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="assets/img/i13.jpg" alt="Producto de ejemplo Smartphone iPhone13"
-                            class="product-card__image">
-                        <h3 class="product-card__name">iPhone 13</h3>
-                        <p class="product-card__price">$599.990</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-smartphone-001">Ver Detalle</button>
-                    </div>
-                </div>
-            </div>
-        </section>
 
+    <main class="main-content">
+        <section class="contact-section container">
+            <h1>Contáctanos</h1>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Número de Teléfono (opcional):</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Comentario:</label>
+                        <textarea id="comments" name="comments" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="button button--primary">Enviar Mensaje</button>
+                </form>
+
+                <aside class="contact-sidebar">
+                    <h2>Síguenos en Redes Sociales</h2>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                            <img src="assets/img/i.png" alt="Instagram">
+                        </a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                            <img src="assets/img/f.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <h3>O escríbenos directamente:</h3>
+                    <p class="contact-email">
+                        <a href="mailto:info@telovendo.cl">info@telovendo.cl</a>
+                    </p>
+                </aside>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
@@ -85,6 +88,7 @@
             <p>Diseñado con pasión por Daniela Rodríguez</p>
         </div>
     </footer>
+
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="modal-close-button">&times;</span>

@@ -1,0 +1,105 @@
+// assets/scss/_form.scss
+
+.contact-section {
+    padding: $spacing-large 0; // Ajusta el padding superior/inferior
+    h1 {
+        text-align: center;
+        margin-bottom: $spacing-x-large;
+    }
+}
+
+.contact-content {
+    display: flex; // flexbox para que el formulario y el aside estén lado a lado
+    flex-wrap: wrap; // Permite que los elementos se envuelvan en pantallas pequeñas
+    gap: $spacing-large; // Espacio entre el formulario y el sidebar
+    align-items: flex-start; // Alinea los ítems al inicio (cross axis)
+
+    @media (max-width: $breakpoint-medium) {
+        flex-direction: column; // En pantallas más pequeñas, apilarlos
+    }
+}
+
+.contact-form {
+    flex: 3; // El formulario ocupará 3 partes del espacio disponible
+    min-width: 300px; // Evita que se haga muy pequeño
+    background-color: $color-white;
+    padding: $spacing-large;
+    border-radius: $border-radius-medium;
+    box-shadow: 0 2px 4px rgba($color-primary-text, 0.1);
+
+    .form-group {
+        margin-bottom: $spacing-medium;
+
+        label {
+            display: block; // Hace que el label ocupe toda su línea
+            margin-bottom: $spacing-xx-small;
+            color: $color-primary-text;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%; // Ocupa todo el ancho disponible en su contenedor
+            padding: $spacing-small;
+            border: 1px solid $color-amazon-dark-blue;
+            border-radius: $border-radius-small;
+            font-size: $font-size-base;
+            font-family: $font-family-primary;
+            color: $color-primary-text;
+            background-color: $color-background-light;
+
+            &:focus {
+                outline: none;
+                border-color: $color-amazon-dark-blue;
+                box-shadow: 0 0 0 2px rgba($color-amazon-dark-blue, 0.2);
+            }
+        }
+
+        textarea {
+            resize: vertical; // Permite redimensionar solo verticalmente
+        }
+    }
+}
+
+.contact-sidebar {
+    flex: 1; // El sidebar ocupará 1 parte del espacio disponible
+    min-width: 250px; // Evita que se haga muy pequeño
+    background-color: $color-white;
+    padding: $spacing-large;
+    border-radius: $border-radius-medium;
+    box-shadow: 0 2px 4px rgba($color-primary-text, 0.1);
+    text-align: center; // Centra el contenido del sidebar
+
+    h2, h3 {
+        margin-bottom: $spacing-medium;
+        color: $color-primary-text;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center; // Centra los iconos
+        gap: $spacing-medium; // Espacio entre iconos
+        margin-bottom: $spacing-large;
+
+        img {
+            width: 40px; // Tamaño de los iconos, ajusta según tus imágenes
+            height: 40px;
+            transition: transform 0.2s ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .contact-email {
+        font-size: $font-size-large;
+        a {
+            color: $color-amazon-dark-blue; // Usa tu color de enlace
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

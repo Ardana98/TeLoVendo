@@ -49,3 +49,9 @@ $border-radius-large: 12px;
 // Transiciones
 $transition-speed: 0.3s;
 $transition-ease: ease-in-out;
+
+// --- Breakpoints ---
+$breakpoint-small: 576px;    // O el valor que uses para móviles pequeños
+$breakpoint-medium: 768px;   // O el valor que uses para tablets
+$breakpoint-large: 992px;    // O el valor que uses para laptops/desktops
+$breakpoint-x-large: 1200px; // O el valor que uses para monitores grandes
