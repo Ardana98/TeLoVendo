@@ -87,7 +87,7 @@
         @extend .button--secondary; // Y sus estilos secundarios
 
         &.active {
-            background-color: $color-amazon-dark-blue; // Color de botón activo
+            background-color: $color-amazon-light-blue; // Color de botón activo
             color: $color-white;
             border-color: $color-amazon-dark-blue;
         }
