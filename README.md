@@ -42,6 +42,8 @@ Para garantizar un código CSS robusto, mantenible y escalable, este proyecto si
   - `_responsive.scss`: (para `@media queries` globales o breakpoints).
 
   Esta modularización facilita la navegación, el mantenimiento y la colaboración al segregar responsabilidades de estilo en archivos dedicados.
+  **Consideración sobre Librerías Externas:**
+  Para mantener una clara separación entre el código de estilo propio del proyecto y el de librerías de terceros, he decidido que cuando se integren frameworks o librerías CSS externas (como Bootstrap), sus archivos se organizarán en una subcarpeta dedicada (`assets/scss/vendors/`). Esta estrategia asegura que el código base permanezca limpio y permite una gestión más sencilla de dependencias externas.
 
   ### **2. Implementación de la Metodología BEM**
 
