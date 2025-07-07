@@ -1,3 +1,4 @@
+@use 'config';
 // assets/scss/_responsive.scss
 
     /* --- Sidebar de navegación móvil --- */
@@ -7,11 +8,11 @@
         right: -300px; // Oculto fuera de la pantalla a la derecha
         width: 280px; // Ancho del sidebar
         height: 100%;
-        background-color: $color-primary-text; // Mismo color que el header
-        color: $color-white;
-        padding: $spacing-medium;
-        box-shadow: -2px 0 5px $box-shadow-medium; // Sombra para efecto 3D
-        transition: right $transition-speed $transition-ease; // Transición suave al aparecer/desaparecer
+        background-color: config.$color-primary-text; // Mismo color que el header
+        color: config.$color-white;
+        padding: config.$spacing-medium;
+        box-shadow: -2px 0 5px config.$box-shadow-medium; // Sombra para efecto 3D
+        transition: right config.$transition-speed config.$transition-ease; // Transición suave al aparecer/desaparecer
         z-index: 1000; // Asegura que esté encima de todo
 
         &--active {
@@ -21,34 +22,34 @@
         &__close-btn {
             background: none;
             border: none;
-            color: $color-white;
-            font-size: $font-size-h2;
+            color: config.$color-white;
+            font-size: config.$font-size-h2;
             font-weight: bold;
             cursor: pointer;
             position: absolute;
-            top: $spacing-small;
-            right: $spacing-medium;
-            padding: $spacing-x-small;
+            top: config.$spacing-small;
+            right: config.$spacing-medium;
+            padding: config.$spacing-x-small;
             line-height: 1; // Ajusta la altura de línea para la 'X'
         }
 
         .sidebar-nav__list {
-            margin-top: $spacing-xx-large; // Espacio para el botón de cerrar
+            margin-top: config.$spacing-xx-large; // Espacio para el botón de cerrar
             display: flex;
             flex-direction: column; // Los ítems del menú uno debajo del otro
-            gap: $spacing-large; // Espacio entre los ítems
+            gap: config.$spacing-large; // Espacio entre los ítems
         }
 
         .sidebar-nav__link {
-            color: $color-white;
+            color: config.$color-white;
             text-decoration: none;
-            font-size: $font-size-large;
-            padding: $spacing-small $spacing-x-small;
+            font-size: config.$font-size-large;
+            padding: config.$spacing-small config.$spacing-x-small;
             display: block; // Para que ocupe todo el ancho
-            transition: background-color $transition-speed $transition-ease;
+            transition: background-color config.$transition-speed config.$transition-ease;
 
             &:hover {
-                background-color: rgba($color-white, 0.1); // Efecto hover
+                background-color: rgba(config.$color-white, 0.1); // Efecto hover
             }
         }
     }

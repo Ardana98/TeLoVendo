@@ -1,3 +1,4 @@
+@use 'config';
 // assets/scss/_modal.scss
 
 /* --- Modal de Detalle de Producto --- */
@@ -21,11 +22,11 @@
     }
 
     .modal-content {
-        background-color: $color-white;
+        background-color: config.$color-white;
         margin: auto; /* Centra el contenido */
-        padding: $spacing-large;
-        border-radius: $border-radius-medium;
-        box-shadow: $box-shadow-large; // <-- USANDO LA VARIABLE CORRECTA DE CONFIG
+        padding: config.$spacing-large;
+        border-radius: config.$border-radius-medium;
+        box-shadow: config.$box-shadow-large; // <-- USANDO LA VARIABLE CORRECTA DE CONFIG
         width: 90%; /* Ancho predeterminado */
         max-width: 900px; /* Ancho máximo para pantallas grandes */
         position: relative; /* Para posicionar el botón de cerrar */
@@ -33,23 +34,23 @@
 
         @media (max-width: 768px) {
             width: 95%; /* Un poco más de ancho en móvil */
-            padding: $spacing-medium;
+            padding: config.$spacing-medium;
         }
     }
 
     .modal-close-button {
-        color: $color-secondary-text; // Usando $color-secondary-text, que existe en tu config
-        font-size: $font-size-h1;
+        color: config.$color-secondary-text; // Usando $color-secondary-text, que existe en tu config
+        font-size: config.$font-size-h1;
         font-weight: bold;
         position: absolute;
-        top: $spacing-small;
-        right: $spacing-medium;
+        top: config.$spacing-small;
+        right: config.$spacing-medium;
         cursor: pointer;
-        transition: color $transition-speed;
+        transition: color config.$transition-speed;
 
         &:hover,
         &:focus {
-            color: $color-amazon-orange;
+            color: config.$color-amazon-orange;
             text-decoration: none;
             cursor: pointer;
         }
@@ -57,14 +58,14 @@
 
     .modal-body {
         display: flex;
-        gap: $spacing-large;
+        gap: config.$spacing-large;
         align-items: flex-start; /* Alinea arriba */
-        margin-top: $spacing-large; /* Espacio para el botón de cerrar */
+        margin-top: config.$spacing-large; /* Espacio para el botón de cerrar */
 
         @media (max-width: 768px) {
             flex-direction: column; /* Apila en móvil */
             align-items: center;
-            gap: $spacing-medium;
+            gap: config.$spacing-medium;
         }
     }
 
@@ -72,7 +73,7 @@
         width: 40%;
         max-width: 300px;
         height: auto;
-        border-radius: $border-radius-small;
+        border-radius: config.$border-radius-small;
         object-fit: contain; // Asegura que la imagen completa se vea
         flex-shrink: 0; // Evita que la imagen se reduzca demasiado
 
@@ -92,41 +93,41 @@
     }
 
     .modal-title {
-        font-size: $font-size-h2;
-        color: $color-primary-text; // Usando $color-primary-text
-        margin-bottom: $spacing-small;
+        font-size: config.$font-size-h2;
+        color: config.$color-primary-text; // Usando $color-primary-text
+        margin-bottom: config.$spacing-small;
     }
 
     .modal-price {
-        font-size: $font-size-h3;
-        color: $color-amazon-orange;
+        font-size: config.$font-size-h3;
+        color: config.$color-amazon-orange;
         font-weight: bold;
-        margin-bottom: $spacing-medium;
+        margin-bottom: config.$spacing-medium;
     }
 
     .modal-description {
-        font-size: $font-size-base;
-        color: $color-secondary-text; // Usando $color-secondary-text
-        margin-bottom: $spacing-large;
+        font-size: config.$font-size-base;
+        color: config.$color-secondary-text; // Usando $color-secondary-text
+        margin-bottom: config.$spacing-large;
         line-height: 1.6;
     }
 
     .modal-specs {
         list-style: none;
         padding: 0;
-        margin-bottom: $spacing-large;
+        margin-bottom: config.$spacing-large;
 
         li {
-            color: $color-primary-text; // Usando $color-primary-text
-            margin-bottom: $spacing-x-small;
-            font-size: $font-size-small;
+            color: config.$color-primary-text; // Usando $color-primary-text
+            margin-bottom: config.$spacing-x-small;
+            font-size: config.$font-size-small;
         }
     }
 
     .modal-add-to-cart {
         width: 100%;
-        padding: $spacing-small;
-        font-size: $font-size-large;
+        padding: config.$spacing-small;
+        font-size: config.$font-size-large;
     }
 }
 

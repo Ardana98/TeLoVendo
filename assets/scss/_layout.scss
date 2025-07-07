@@ -1,9 +1,11 @@
+@use 'config';
+
 // assets/scss/_layout.scss
 
 .main-header {
-    background-color: $color-primary-text; // Fondo oscuro para el header
-    padding: $spacing-small 0;
-    color: $color-white; // Texto blanco en el header
+    background-color: config.$color-primary-text; // Fondo oscuro para el header
+    padding: config.$spacing-small 0;
+    color: config.$color-white; // Texto blanco en el header
 
     .container { // Este bloque está bien aquí
         display: flex;
@@ -17,7 +19,7 @@
         color: $color-white; */
         text-decoration: none;
         &:hover {
-            color: $color-amazon-orange; // Logo cambia de color al pasar el ratón
+            color: config.$color-amazon-orange; // Logo cambia de color al pasar el ratón
         }
          // Estilos para el contenedor del logo (el <a>) si los necesitas
         display: flex; // Para alinear la imagen verticalmente si es necesario
@@ -37,18 +39,18 @@
         }
 
         &__item {
-            margin-left: $spacing-large; // Espacio entre ítems del menú
+            margin-left: config.$spacing-large; // Espacio entre ítems del menú
         }
 
         &__link {
-            color: $color-white;
+            color: config.$color-white;
             text-decoration: none;
-            padding: $spacing-x-small $spacing-small;
-            border-radius: $border-radius-small;
-            transition: background-color $transition-speed $transition-ease;
+            padding: config.$spacing-x-small config.$spacing-small;
+            border-radius: config.$border-radius-small;
+            transition: background-color config.$transition-speed config.$transition-ease;
 
             &:hover, &.active {
-                background-color: rgba($color-white, 0.2); // Fondo suave al pasar el ratón o activo
+                background-color: rgba(config.$color-white, 0.2); // Fondo suave al pasar el ratón o activo
             }
         }
     }
@@ -59,24 +61,24 @@
         background: none;
         border: none;
         cursor: pointer;
-        padding: $spacing-x-small;
+        padding: config.$spacing-x-small;
 
         &__icon {
             display: block;
             width: 25px;
             height: 3px;
-            background-color: $color-white;
+            background-color: config.$color-white;
             position: relative;
-            transition: background-color $transition-speed $transition-ease;
+            transition: background-color config.$transition-speed config.$transition-ease;
 
             &::before, &::after {
                 content: '';
                 display: block;
                 width: 25px;
                 height: 3px;
-                background-color: $color-white;
+                background-color: config.$color-white;
                 position: absolute;
-                transition: transform $transition-speed $transition-ease;
+                transition: transform config.$transition-speed config.$transition-ease;
             }
             &::before { top: -8px; }
             &::after { top: 8px; }
@@ -100,20 +102,20 @@
 // ... el resto de mi _layout.scss sigue igual ...
 .main-content {
    padding-top: 0; // <-- CAMBIO CLAVE AQUÍ: Esto elimina el espacio blanco superior
-    padding-bottom: $spacing-large;
+    padding-bottom: config.$spacing-large;
 }
 
 .main-footer {
-    background-color: $color-amazon-dark-blue; // Fondo azul oscuro para el footer
-    color: $color-white;
-    padding: $spacing-medium 0;
+    background-color: config.$color-amazon-dark-blue; // Fondo azul oscuro para el footer
+    color: config.$color-white;
+    padding: config.$spacing-medium 0;
     text-align: center;
-    font-size: $font-size-small;
+    font-size: config.$font-size-small;
 
     .container {
         display: flex;
         flex-direction: column;
-        gap: $spacing-x-small;
+        gap: config.$spacing-x-small;
         align-items: center; // Centra horizontalmente los ítems en una columna
         justify-content: center; // Centra verticalmente los ítems si hay espacio extra (útil para contenido corto)
         width: 100%; // Asegura que el contenedor ocupe todo el ancho
@@ -129,17 +131,17 @@
     background-repeat: no-repeat; // Evita que la imagen se repita
     background-attachment: fixed; // Opcional: la imagen se queda fija al hacer scroll (efecto parallax)
 
-    padding: $spacing-xx-large 0;
+    padding: config.$spacing-xx-large 0;
     text-align: center;
 
     h1 {
-        font-size: $font-size-h1;
-        margin-bottom: $spacing-medium;
+        font-size: config.$font-size-h1;
+        margin-bottom: config.$spacing-medium;
         color: inherit; // Hereda el color del padre (que ahora es $color-white)
     }
     p {
-        font-size: $font-size-large;
-        margin-bottom: $spacing-large;
+        font-size: config.$font-size-large;
+        margin-bottom: config.$spacing-large;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
@@ -165,17 +167,17 @@
 }
 
 .featured-products-section, .catalog-page-section, .about-page-section {
-    padding: $spacing-large 0;
+    padding: config.$spacing-large 0;
     h2 {
         text-align: center;
-        margin-bottom: $spacing-large;
-        font-size: $font-size-h2;
+        margin-bottom: config.$spacing-large;
+        font-size: config.$font-size-h2;
     }
 }
 
 /* --- Sección del Banner Promocional --- */
 .promo-banner-section {
-    padding: $spacing-large 0; // Espacio superior e inferior
+    padding: config.$spacing-large 0; // Espacio superior e inferior
     text-align: center; // Para centrar la imagen si es más pequeña que el contenedor
     /* background-image: url('../img/full-tecnologia-122823.jpeg'); // <-- ¡Aquí va la imagen!
     background-size: cover;      // La imagen cubrirá todo el área, recortando si es necesario
@@ -188,7 +190,7 @@
         height: auto; // Mantiene la proporción de la imagen
         display: block; // Elimina el espacio extra debajo de las imágenes (si fuera inline)
         margin: 0 auto; // Centra la imagen horizontalmente
-        border-radius: $border-radius-medium; // Opcional: bordes redondeados
-        box-shadow: 0 4px 8px $box-shadow-small; // Opcional: sombra para que resalte
+        border-radius: config.$border-radius-medium; // Opcional: bordes redondeados
+        box-shadow: 0 4px 8px config.$box-shadow-small; // Opcional: sombra para que resalte
     }
 }
