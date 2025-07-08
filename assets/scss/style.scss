@@ -1,9 +1,29 @@
 // assets/scss/style.scss
 
-@use 'config'; 
-@use 'base';
-@use 'layout';
-@use 'components';
-@use 'modal';
-@use 'responsive';
-@use 'form';
+// 1. Abstracts
+@use 'abstracts/config';
+// Si tuvieras mixins: @use 'abstracts/mixins';
+// Si tuvieras funciones: @use 'abstracts/functions';
+
+// 2. Base
+@use 'base/base';
+@use 'base/responsive'; // Si decides mantenerlo como un parcial separado en base
+
+// 3. Layout
+@use 'layout/layout';
+
+// 4. Components
+@use 'components/components'; // Este quizás lo rompas en el futuro
+@use 'components/form';
+@use 'components/modal';
+
+// 5. Pages (si tuvieras)
+// @use 'pages/home';
+// @use 'pages/catalog';
+// @use 'pages/contact';
+
+// 6. Themes (si tuvieras)
+// @use 'themes/dark';
+
+// 7. Vendors (si tuvieras librerías externas)
+// @use 'vendors/normalize';

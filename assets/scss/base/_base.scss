@@ -1,4 +1,4 @@
-@use 'config';
+@use '../abstracts/config'; // Ruta actualizada
 // assets/scss/_base.scss
 // Aplicar box-sizing: border-box a todos los elementos globalmente.
 // Esto es una buena práctica y simplifica el layout.
