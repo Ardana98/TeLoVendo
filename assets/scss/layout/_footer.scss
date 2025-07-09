@@ -1,5 +1,5 @@
 // assets/scss/layout/_footer.scss
-@use '../abstracts/config'; // Importa las variables de configuración
+@use '../abstracts/config'; 
 
 .main-footer {
     background-color: config.$color-amazon-dark-blue;

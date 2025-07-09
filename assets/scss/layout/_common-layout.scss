@@ -1,0 +1,16 @@
+// assets/scss/layout/_common-layout.scss
+
+@use '../abstracts/config'; 
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 config.$spacing-medium; // Padding lateral para que no se me pegue a los bordes
+}
+
+// Esta regla es CRUCIAL para el "Sticky Footer".
+.main-content {
+    flex-grow: 1; // Permite que .main-content ocupe todo el espacio vertical restante
+    padding-top: 0; 
+    padding-bottom: config.$spacing-large;
+}

@@ -1,5 +1,5 @@
 // assets/scss/layout/_promo-banner-section.scss
-@use '../abstracts/config'; // Importa las variables de configuración
+@use '../abstracts/config'; 
 
 .promo-banner-section {
     padding: config.$spacing-large 0; // Padding arriba y abajo

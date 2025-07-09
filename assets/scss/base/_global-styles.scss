@@ -1,9 +1,5 @@
-// assets/scss/base/_base.scss
-@use '../abstracts/config'; // Mantiene la importación de config
 
-// Importa los nuevos parciales
-@use 'reset';
-@use 'typography';
+@use '../abstracts/config';
 
 // Estilos globales del body y contenedores principales
 body {

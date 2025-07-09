@@ -1,5 +1,5 @@
-@use '../abstracts/config'; // Ruta actualizada
-// assets/scss/_responsive.scss
+@use '../abstracts/config'; 
+
 
     /* --- Sidebar de navegación móvil --- */
     .sidebar {
@@ -49,7 +49,7 @@
             transition: background-color config.$transition-speed config.$transition-ease;
 
             &:hover {
-                background-color: rgba(config.$color-white, 0.1); // Efecto hover
+                background-color: rgba(config.$color-white, 0.1); // Efecto hover (investigate more)
             }
         }
     }

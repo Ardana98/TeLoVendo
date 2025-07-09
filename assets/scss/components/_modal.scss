@@ -26,7 +26,7 @@
         margin: auto; /* Centra el contenido */
         padding: config.$spacing-large;
         border-radius: config.$border-radius-medium;
-        box-shadow: config.$box-shadow-large; // <-- USANDO LA VARIABLE CORRECTA DE CONFIG
+        box-shadow: config.$box-shadow-large; 
         width: 90%; /* Ancho predeterminado */
         max-width: 900px; /* Ancho máximo para pantallas grandes */
         position: relative; /* Para posicionar el botón de cerrar */
@@ -39,7 +39,7 @@
     }
 
     .modal-close-button {
-        color: config.$color-secondary-text; // Usando $color-secondary-text, que existe en tu config
+        color: config.$color-secondary-text; 
         font-size: config.$font-size-h1;
         font-weight: bold;
         position: absolute;
@@ -107,7 +107,7 @@
 
     .modal-description {
         font-size: config.$font-size-base;
-        color: config.$color-secondary-text; // Usando $color-secondary-text
+        color: config.$color-secondary-text; 
         margin-bottom: config.$spacing-large;
         line-height: 1.6;
     }
@@ -118,7 +118,7 @@
         margin-bottom: config.$spacing-large;
 
         li {
-            color: config.$color-primary-text; // Usando $color-primary-text
+            color: config.$color-primary-text; 
             margin-bottom: config.$spacing-x-small;
             font-size: config.$font-size-small;
         }

@@ -1,8 +1,0 @@
-// assets/scss/layout/_layout.scss
-
-// Importa todos los sub-parciales de layout
-@use 'header'; // Ya lo habías agregado
-@use 'footer'; // <-- Agrega esta línea
-@use 'hero-section'; // Si ya la tenías o la agregarás después
-@use 'promo-banner-section'; // Si ya la tenías o la agregarás después
-@use 'sections'; // Si ya la tenías o la agregarás después

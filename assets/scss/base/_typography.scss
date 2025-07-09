@@ -1,6 +1,6 @@
-@use '../abstracts/config'; // Ruta actualizada
 // assets/scss/base/_typography.scss
-@use '../abstracts/config'; // Importa variables para tipografía
+@use '../abstracts/config'; // ¡Esta línea debe estar aquí!
+// ... el resto de tu código de tipografía
 
 body {
     font-family: config.$font-family-primary;

@@ -1,16 +1,23 @@
 // assets/scss/style.scss
 
 // 1. Abstracts
-@use 'abstracts/config';
-// Si tuvieras mixins: @use 'abstracts/mixins';
-// Si tuvieras funciones: @use 'abstracts/functions';
+// Si tuviera mixins: @use 'abstracts/mixins';
+// Si tuviera funciones: @use 'abstracts/functions';
 
 // 2. Base
-@use 'base/base';
-@use 'base/responsive'; // Si decides mantenerlo como un parcial separado en base
+@use 'base/reset';
+@use 'base/typography'; // Asegúrate de que este archivo use @use 'abstracts/config' para las variables
+@use 'base/global-styles'; // Si tienes un archivo de colores
+
 
 // 3. Layout
-@use 'layout/layout';
+@use 'layout/common-layout';
+@use 'layout/sidebar'; 
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/hero-section';
+@use 'layout/promo-banner-section';
+@use 'layout/sections';
 
 // 4. Components
 @use 'components/button';
@@ -19,13 +26,11 @@
 @use 'components/form'; // Si ya lo tenías
 @use 'components/modal'; // Si ya lo tenías
 
-// 5. Pages (si tuvieras)
+// 5. Pages (si tuviera)
 // @use 'pages/home';
 // @use 'pages/catalog';
 // @use 'pages/contact';
 
-// 6. Themes (si tuvieras)
+// 6. Themes (si tuviera)
 // @use 'themes/dark';
 
-// 7. Vendors (si tuvieras librerías externas)
-// @use 'vendors/normalize';

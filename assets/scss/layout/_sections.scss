@@ -1,5 +1,5 @@
 // assets/scss/layout/_sections.scss
-@use '../abstracts/config'; // Importa las variables de configuración
+@use '../abstracts/config'; 
 
 .featured-products-section, .catalog-page-section, .about-page-section {
     padding: config.$spacing-large 0; // Padding arriba y abajo para estas secciones

@@ -1,5 +1,5 @@
 // assets/scss/layout/_hero-section.scss
-@use '../abstracts/config'; // Importa las variables de configuración
+@use '../abstracts/config'; 
 
 .hero-section {
     background-image: url('../img/herob3.jpg');
@@ -14,7 +14,7 @@
     h1 {
         font-size: config.$font-size-h1;
         margin-bottom: config.$spacing-medium;
-        color: inherit; // Para que herede el color del contenedor si lo defines
+        color: inherit; // Para que herede el color del contenedor si lo defino
     }
     p {
         font-size: config.$font-size-large;
