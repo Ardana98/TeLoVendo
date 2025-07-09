@@ -1,0 +1,19 @@
+// assets/scss/layout/_footer.scss
+@use '../abstracts/config'; // Importa las variables de configuración
+
+.main-footer {
+    background-color: config.$color-amazon-dark-blue;
+    color: config.$color-white;
+    padding: config.$spacing-medium 0;
+    text-align: center;
+    font-size: config.$font-size-small;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: config.$spacing-x-small;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}

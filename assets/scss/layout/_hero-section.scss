@@ -1,0 +1,42 @@
+// assets/scss/layout/_hero-section.scss
+@use '../abstracts/config'; // Importa las variables de configuración
+
+.hero-section {
+    background-image: url('../img/herob3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; // Efecto parallax
+
+    padding: config.$spacing-xx-large 0; // Mucho padding arriba y abajo
+    text-align: center; // Centra el texto dentro de la sección
+
+    h1 {
+        font-size: config.$font-size-h1;
+        margin-bottom: config.$spacing-medium;
+        color: inherit; // Para que herede el color del contenedor si lo defines
+    }
+    p {
+        font-size: config.$font-size-large;
+        margin-bottom: config.$spacing-large;
+        max-width: 800px; // Limita el ancho del párrafo
+        margin-left: auto;
+        margin-right: auto;
+        color: inherit; // Para que herede el color del contenedor
+    }
+    position: relative; // Necesario para el pseudo-elemento overlay
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background-color: rgba(0, 0, 0, 0.5); // Overlay negro semi-transparente (descomentar si se usa)
+        z-index: 1; // Asegura que el overlay esté debajo del contenido
+    }
+    .container {
+        position: relative; // Asegura que el contenido esté encima del overlay
+        z-index: 2;
+    }
+}

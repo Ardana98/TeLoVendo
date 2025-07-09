@@ -1,0 +1,31 @@
+@use '../abstracts/config'; // Ruta actualizada
+// assets/scss/base/_typography.scss
+@use '../abstracts/config'; // Importa variables para tipografía
+
+body {
+    font-family: config.$font-family-primary;
+    font-size: config.$font-size-base;
+    line-height: 1.6;
+    color: config.$color-primary-text;
+}
+
+// Estilos de elementos HTML básicos
+a {
+    color: config.$color-amazon-dark-blue;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Estilos para encabezados (h1, h2, etc.)
+h1 { font-size: config.$font-size-h1; }
+h2 { font-size: config.$font-size-h2; }
+h3 { font-size: config.$font-size-h3; }
+h4 { font-size: config.$font-size-h4; }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: config.$font-family-secondary;
+    margin-bottom: config.$spacing-small;
+    color: config.$color-primary-text;
+}

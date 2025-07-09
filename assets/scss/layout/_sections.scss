@@ -1,0 +1,11 @@
+// assets/scss/layout/_sections.scss
+@use '../abstracts/config'; // Importa las variables de configuración
+
+.featured-products-section, .catalog-page-section, .about-page-section {
+    padding: config.$spacing-large 0; // Padding arriba y abajo para estas secciones
+    h2 {
+        text-align: center; // Centra los títulos de sección
+        margin-bottom: config.$spacing-large;
+        font-size: config.$font-size-h2;
+    }
+}

@@ -1,0 +1,16 @@
+// assets/scss/layout/_promo-banner-section.scss
+@use '../abstracts/config'; // Importa las variables de configuración
+
+.promo-banner-section {
+    padding: config.$spacing-large 0; // Padding arriba y abajo
+    text-align: center; // Centra el contenido (la imagen)
+
+    .promo-banner__image {
+        max-width: 100%; // Asegura que la imagen sea responsive
+        height: auto;
+        display: block; // Para que `margin: 0 auto` funcione
+        margin: 0 auto; // Centra la imagen
+        border-radius: config.$border-radius-medium;
+        box-shadow: 0 4px 8px config.$box-shadow-small; // Sombra suave
+    }
+}
