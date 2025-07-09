@@ -1,7 +1,7 @@
 
 @use '../abstracts/config';
 
-// Estilos globales del body y contenedores principales
+// Estilos globales del body 
 body {
     background-color: config.$color-background-light;
     margin: 0; // Quita el margen por defecto del body
@@ -9,18 +9,4 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-// Estilo para el contenedor centralizado (usado en la mayoría de las secciones)
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 config.$spacing-medium; // Padding lateral para que no se pegue a los bordes
-}
-
-// Esta regla es CRUCIAL para el "Sticky Footer".
-.main-content {
-    flex-grow: 1; // Permite que .main-content ocupe todo el espacio vertical restante
-    padding-top: 0; // <-- Asegúrate de que esta línea esté aquí si la tenías
-    padding-bottom: config.$spacing-large;
 }

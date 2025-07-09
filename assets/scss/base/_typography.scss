@@ -1,6 +1,6 @@
 // assets/scss/base/_typography.scss
-@use '../abstracts/config'; // ¡Esta línea debe estar aquí!
-// ... el resto de tu código de tipografía
+@use '../abstracts/config'; 
+
 
 body {
     font-family: config.$font-family-primary;

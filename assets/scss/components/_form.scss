@@ -17,12 +17,13 @@
     align-items: flex-start; // Alinea los ítems al inicio (cross axis)
 
     @media (max-width: config.$breakpoint-medium) {
-        flex-direction: column; // En pantallas más pequeñas, apilarlos
+        flex-direction: column;
+         // En pantallas más pequeñas, apilarlos
     }
 }
 
 .contact-form {
-    flex: 3; // El formulario ocupará 3 partes del espacio disponible
+    flex: 1 1 65%; // El formulario ocupará 3 partes del espacio disponible
     min-width: 300px; // Evita que se haga muy pequeño
     background-color: config.$color-white;
     padding: config.$spacing-large;
@@ -65,7 +66,7 @@
 }
 
 .contact-sidebar {
-    flex: 1; // El sidebar ocupará 1 parte del espacio disponible
+    flex: 1 1 30%; // El sidebar ocupará 1 parte del espacio disponible
     min-width: 250px; // Evita que se haga muy pequeño
     background-color: config.$color-white;
     padding: config.$spacing-large;
@@ -103,5 +104,22 @@
                 text-decoration: underline;
             }
         }
+    }
+}
+
+// Media query para pantallas más pequeñas: apilar y ocupar el 100% del ancho
+
+@media (max-width: config.$breakpoint-medium) {
+    .contact-content {
+        flex-direction: column;
+        gap: config.$spacing-medium;
+       
+    }
+
+    .contact-form,
+    .contact-sidebar {
+        flex-basis: 100%;
+        max-width: 100%;
+        
     }
 }

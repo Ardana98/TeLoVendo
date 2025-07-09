@@ -1,7 +1,7 @@
 // assets/scss/components/_filter-buttons.scss
 @use '../abstracts/config';
-// Importamos el parcial del botón para usar @extend
-@use 'button'; // Importamos el parcial '_button.scss' directamente
+// Importé el parcial del botón para usar @extend
+@use 'button'; // Importé el parcial '_button.scss' directamente
 
 .filter-buttons {
     display: flex;

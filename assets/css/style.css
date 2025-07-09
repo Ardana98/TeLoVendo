@@ -64,17 +64,10 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
-
-.main-content {
-  flex-grow: 1;
-  padding-top: 0;
-  padding-bottom: 32px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
 }
 
 .main-content {
@@ -403,7 +396,7 @@ body {
 }
 
 .contact-form {
-  flex: 3;
+  flex: 1 1 65%;
   min-width: 300px;
   background-color: #FFFFFF;
   padding: 32px;
@@ -444,7 +437,7 @@ body {
 }
 
 .contact-sidebar {
-  flex: 1;
+  flex: 1 1 30%;
   min-width: 250px;
   background-color: #FFFFFF;
   padding: 32px;
@@ -481,6 +474,17 @@ body {
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-form,
+  .contact-sidebar {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 /* --- Modal de Detalle de Producto --- */
 .modal {
   display: none; /* Oculto por defecto */
