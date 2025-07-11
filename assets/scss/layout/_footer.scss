@@ -7,13 +7,35 @@
     padding: config.$spacing-medium 0;
     text-align: center;
     font-size: config.$font-size-small;
+    margin-top: auto;/*permite que el footer se mantenga en la parte inferior*/
 
     .container {
         display: flex;
-        flex-direction: column;
-        gap: config.$spacing-x-small;
+        flex-direction: row;
+        // gap: config.$spacing-x-small;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         width: 100%;
     }
+   // Estilos para el contenedor de los enlaces
+    .social-links {
+        display: flex;
+        gap: config.$spacing-medium;
+
+        // Estilos para los enlaces <a>
+        a {
+            transition: transform 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            // Estilos para las imágenes <img> dentro de los enlaces
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
 }

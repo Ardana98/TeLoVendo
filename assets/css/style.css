@@ -226,14 +226,28 @@ body {
   padding: 20px 0;
   text-align: center;
   font-size: 0.875rem;
+  margin-top: auto; /*permite que el footer se mantenga en la parte inferior*/
 }
 .main-footer .container {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+}
+.main-footer .social-links {
+  display: flex;
+  gap: 20px;
+}
+.main-footer .social-links a {
+  transition: transform 0.2s ease-in-out;
+}
+.main-footer .social-links a:hover {
+  transform: scale(1.1);
+}
+.main-footer .social-links a img {
+  width: 30px;
+  height: 30px;
 }
 
 .hero-section {
@@ -481,6 +495,8 @@ body {
   }
   .contact-form,
   .contact-sidebar {
+    /*  flex:none;
+     width:100%; */
     flex-basis: 100%;
     max-width: 100%;
   }
