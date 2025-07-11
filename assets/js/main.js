@@ -76,9 +76,9 @@ if (productModal && modalCloseButton && viewDetailButtons.length > 0) {
         modalImage.alt = productData.imageAlt;
         modalTitle.textContent = productData.name;
         modalPrice.textContent = productData.price;
-        // La descripción y specs quedan estáticas por ahora, o podrías tomarlas de un atributo data- en la card si existiera
+        // La descripción y specs quedan estáticas por ahora, o podría tomarlas de un atributo data- en la card si existiera
         // modalDescription.textContent = productData.description;
-        // modalSpecs.innerHTML = productData.specsHtml; // Si quieres poner specs, deberían ser un HTML
+        // modalSpecs.innerHTML = productData.specsHtml; // Si quisiera poner specs, deberían ser un HTML
 
         productModal.classList.add('modal--active');
         document.body.style.overflow = 'hidden';

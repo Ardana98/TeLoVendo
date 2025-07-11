@@ -72,7 +72,7 @@ body {
 
 .main-content {
   flex-grow: 1;
-  padding-top: 0;
+  padding-top: 84px;
   padding-bottom: 32px;
 }
 
@@ -144,6 +144,11 @@ body {
   background-color: #0F1111;
   padding: 12px 0;
   color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
 .main-header .container {
   display: flex;
@@ -495,10 +500,10 @@ body {
   }
   .contact-form,
   .contact-sidebar {
-    /*  flex:none;
-     width:100%; */
-    flex-basis: 100%;
-    max-width: 100%;
+    flex: none;
+    width: 100%;
+    /* flex-basis: 100%;
+    max-width: 100%; */
   }
 }
 /* --- Modal de Detalle de Producto --- */

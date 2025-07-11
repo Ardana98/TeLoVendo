@@ -16,8 +16,10 @@ El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave:
 -   **Catálogo de Productos:** Un listado completo de nuestra electrónica reacondicionada, organizado por categorías. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
 -   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un modal que muestra una imagen ampliada del producto, su nombre, precio y una descripción detallada (estática por ahora, pero lista para ser dinámica).
 -   **Página "Acerca del Proyecto":** Una sección dedicada a explicar los objetivos de "Te lo Vendo" y presentar a los responsables detrás de este portal.
--   **Formulario de Contacto:** Una interfaz clara y funcional para que los usuarios puedan enviar consultas o comentarios directamente al equipo de "Te lo Vendo", incluyendo campos para nombre, email, teléfono y mensaje.
+-   **Formulario de Contacto:** Una interfaz clara y funcional para que los usuarios puedan enviar consultas o comentarios directamente al equipo de "Te lo Vendo", incluyendo campos para nombre, apellido, email, teléfono y mensaje.
 -   **Navegación Intuitiva y Responsiva:** Un menú principal claro en la parte superior, que se transforma en un práctico menú de hamburguesa lateral para una navegación fluida en dispositivos móviles y tablets. Los enlaces activos se resaltan para indicar la ubicación actual del usuario.
+  * **`Barra de Navegación Fija`**: El menú principal permanece anclado en la parte superior de la ventana, permitiendo a los usuarios una navegación constante y un acceso rápido a las opciones clave, sin importar su posición en la página.
+  * **`Diseño de Layout Consistente`**: El pie de página permanece siempre visible en la parte inferior de la ventana, incluso en páginas con poco contenido, asegurando una experiencia de usuario consistente y profesional.
 
 ## 🛠️ Aspectos Técnicos y Buenas Prácticas
 Este proyecto ha sido construido siguiendo rigurosos estándares y buenas prácticas de desarrollo Front-End:

@@ -118,10 +118,10 @@
 
     .contact-form,
     .contact-sidebar {
-       /*  flex:none;
-        width:100%; */
-        flex-basis: 100%;
-        max-width: 100%;
+        flex:none;
+        width:100%;
+        /* flex-basis: 100%;
+        max-width: 100%; */
         
     }
 }

@@ -5,7 +5,12 @@
 .main-header {
     background-color: config.$color-primary-text; // Fondo oscuro para el header
     padding: config.$spacing-small 0;
-    color: config.$color-white; // Texto blanco en el header
+    color: config.$color-white; 
+    position: fixed;// Fija el header en la parte superior
+    top: 0; // Asegura que esté en la parte superior
+    left: 0; // Asegura que esté alineado a la izquierda
+    right: 0; // Asegura que esté alineado a la derecha
+    z-index: 999; // Asegura que el header esté por encima de otros elementos
 
     .container { // Este bloque está dentro de .main-header
         display: flex;

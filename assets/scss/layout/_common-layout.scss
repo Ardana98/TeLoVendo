@@ -17,6 +17,6 @@
  // Esta regla es CRUCIAL para el "Sticky Footer".
 .main-content {
     flex-grow: 1; // Permite que .main-content ocupe todo el espacio vertical restante
-    padding-top: 0; 
+    padding-top: 84px; 
     padding-bottom: config.$spacing-large;
 }
