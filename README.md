@@ -136,6 +136,18 @@ assets/
     -   Lógica para el **menú de hamburguesa** que abre y cierra el menú lateral responsivo.
     -   Control de la **clase activa** en la navegación para indicar la página actual.
 -   **Responsividad:** El diseño es completamente responsivo, adaptándose elegantemente a diferentes tamaños de pantalla (desktops, tablets, móviles) utilizando técnicas de CSS (Flexbox, Media Queries) para una experiencia de usuario óptima en cualquier dispositivo.
+Para optimizar la adaptabilidad , he definido puntos de quiebre claves en `_config.scss`, los cuales, se han aplicado en los parciales de layout y componentes: 
+  - `$breakpoint-small` (≤576px) para ajustar rejillas y tipografías.  
+  - `$breakpoint-medium` (≤768px) para reordenar columnas y mostrar/ocultar elementos (como el menú hamburguesa).  
+  - `$breakpoint-large` (≤992px) y mayores para diseños de múltiples columnas.  
+- **Ejemplo de uso:**  
+  ```scss
+  @media (max-width: config.$breakpoint-medium) {
+    .main-nav { display: none; }
+    .menu-toggle { display: block; }
+  }
+
+
 -   **Organización de Carpetas:** Estructura de carpetas clara y estándar (`assets/css`, `assets/js`, `assets/img`, `assets/scss`) que facilita la navegación y el mantenimiento del proyecto.
 
 ## Rol del Desarrollador Front-End y Decisiones Clave
