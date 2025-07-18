@@ -1,9 +1,9 @@
 
-@use '../abstracts/config';
+@use '../abstracts/config' as *;
 
 // Estilos globales del body 
 body {
-    background-color: config.$color-background-light;
+    background-color: $color-background-light;
     margin: 0; // Quita el margen por defecto del body
     // Propiedades para el "Sticky Footer" con Flexbox
     display: flex;

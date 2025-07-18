@@ -1,7 +1,7 @@
 // assets/scss/layout/_header.scss
 @use '../abstracts/config';
 
-
+/* 
 .main-header {
     background-color: config.$color-primary-text; // Fondo oscuro para el header
     padding: config.$spacing-small 0;
@@ -85,15 +85,5 @@
         }
     }
 
-    // El media query también forma parte de .main-header
-    @media (max-width: 768px) {
-        .main-nav {
-            display: none; // Oculta la navegación principal en pantallas pequeñas
-        }
-
-        .menu-toggle {
-            display: block; // Muestra el botón de hamburguesa cuando la pantalla es pequeña
-            margin-left: auto; // Empuja el botón a la derecha
-        }
-    }
-}
+    
+} */

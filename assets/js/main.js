@@ -1,177 +1,154 @@
 // assets/js/main.js
 console.log("main.js cargado correctamente!");
+
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Lógica del Sidebar (Menú Hamburguesa) ---
-    const menuToggle = document.querySelector('.menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const closeBtn = document.querySelector('.sidebar__close-btn');
 
-    // Opcional: Crear un overlay para el fondo
-    // Esto se puede hacer en JS para mayor control o tenerlo en HTML/CSS y solo activar/desactivar
-    let overlay = document.querySelector('.overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.classList.add('overlay');
-        document.body.appendChild(overlay);
-    }
-
-    // Función para abrir el sidebar
-    const openSidebar = () => {
-        sidebar.classList.add('sidebar--active');
-        overlay.classList.add('overlay--active');
-        document.body.style.overflow = 'hidden'; // Evita scroll en el body
-    };
-
-    // Función para cerrar el sidebar
-    const closeSidebar = () => {
-        sidebar.classList.remove('sidebar--active');
-        overlay.classList.remove('overlay--active');
-        document.body.style.overflow = ''; // Restaura scroll en el body
-    };
-
-    // Event Listeners
-    if (menuToggle) {
-        menuToggle.addEventListener('click', openSidebar);
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeSidebar);
-    }
-
-    if (overlay) {
-        overlay.addEventListener('click', closeSidebar); // Cierra el sidebar al hacer clic en el overlay
-    }
-
-    // --- Lógica para activar el enlace de navegación actual ---
-    // (Esto es para resaltar "Inicio", "Catálogo", "Acerca" según la página actual)
-    const currentPath = window.location.pathname.split('/').pop(); // Obtiene el nombre del archivo (ej: index.html)
-    const navLinks = document.querySelectorAll('.main-nav__link, .sidebar-nav__link');
+    // --- Lógica para activar el enlace de navegación actual (Bootstrap Navbar) ---
+    const currentPath = window.location.pathname.split('/').pop();
+    // Apuntamos a los nav-link dentro del navbar de Bootstrap
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
     navLinks.forEach(link => {
-        // Elimina 'active' de todos primero
+        // Quita 'active' y 'aria-current' de todos primero
         link.classList.remove('active');
-        // Añade 'active' si el href del enlace coincide con la página actual
+        link.removeAttribute('aria-current');
+
         const linkPath = link.getAttribute('href');
+        // Asegura que 'index.html' se active correctamente en la raíz y en el propio index.html
         if (linkPath === currentPath || (currentPath === '' && linkPath === 'index.html')) {
             link.classList.add('active');
-        }
-    });
-    // --- Lógica del Modal de Detalle de Producto ---
-const productModal = document.getElementById('productModal');
-const modalCloseButton = document.querySelector('.modal-close-button');
-const viewDetailButtons = document.querySelectorAll('.product-card__button');
-
-// Referencias a los elementos dentro del modal para rellenar dinámicamente
-const modalImage = productModal.querySelector('.modal-image');
-const modalTitle = productModal.querySelector('.modal-title');
-const modalPrice = productModal.querySelector('.modal-price');
-const modalDescription = productModal.querySelector('.modal-description'); // Mantendremos estática por ahora
-const modalSpecs = productModal.querySelector('.modal-specs'); // Mantendremos estática por ahora
-
-if (productModal && modalCloseButton && viewDetailButtons.length > 0) {
-    // Función para abrir el modal
-    function openModal(productData) { // Ahora recibe datos del producto
-        // Rellenar el modal con la información del producto
-        modalImage.src = productData.imageSrc;
-        modalImage.alt = productData.imageAlt;
-        modalTitle.textContent = productData.name;
-        modalPrice.textContent = productData.price;
-        // La descripción y specs quedan estáticas por ahora, o podría tomarlas de un atributo data- en la card si existiera
-        // modalDescription.textContent = productData.description;
-        // modalSpecs.innerHTML = productData.specsHtml; // Si quisiera poner specs, deberían ser un HTML
-
-        productModal.classList.add('modal--active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // Función para cerrar el modal
-    function closeModal() {
-        productModal.classList.remove('modal--active');
-        document.body.style.overflow = '';
-    }
-
-    // Abrir modal al hacer clic en "Ver Detalle"
-    viewDetailButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-
-            // Obtener la tarjeta de producto padre del botón clicado
-            const productCard = button.closest('.product-card');
-            if (productCard) {
-                // Extraer la información de la tarjeta
-                const imageElement = productCard.querySelector('.product-card__image');
-                const nameElement = productCard.querySelector('.product-card__name');
-                const priceElement = productCard.querySelector('.product-card__price');
-
-                const productData = {
-                    imageSrc: imageElement ? imageElement.src : 'assets/img/placeholder.jpg',
-                    imageAlt: imageElement ? imageElement.alt : 'Imagen de Producto',
-                    name: nameElement ? nameElement.textContent : 'Producto Desconocido',
-                    price: priceElement ? priceElement.textContent : '$XXX.XXX'
-                };
-
-                openModal(productData);
-            } else {
-                // Si por alguna razón no encuentra la tarjeta padre, abre el modal con placeholder
-                openModal({
-                    imageSrc: 'assets/img/placeholder.jpg',
-                    imageAlt: 'Producto',
-                    name: 'Producto sin Información',
-                    price: '$0'
-                });
-            }
-        });
-    });
-
-    // Cerrar modal al hacer clic en el botón de cerrar (X)
-    modalCloseButton.addEventListener('click', closeModal);
-
-    // Cerrar modal al hacer clic fuera del contenido del modal
-    productModal.addEventListener('click', (event) => {
-        if (event.target === productModal) {
-            closeModal();
+            link.setAttribute('aria-current', 'page');
+        } else if (currentPath === '' && linkPath === 'index.html') { // Manejo especial para la página de inicio
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
         }
     });
 
-    // Cerrar modal con la tecla Escape
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && productModal.classList.contains('modal--active')) {
-            closeModal();
-        }
-    });
-}
+    // --- Lógica del Modal de Detalle de Producto (Con Bootstrap Modal - Solo para catálogo.html) ---
+    // Seleccionamos el elemento del modal de Bootstrap
+    const productDetailModalElement = document.getElementById('productDetailModal');
 
-// --- Lógica de Filtrado de Productos por Categoría (Catálogo) ---
-const filterButtons = document.querySelectorAll('.filter-button');
-const productCards = document.querySelectorAll('.product-card');
+    // Solo si el modal de producto existe en la página actual (ej. catalogo.html)
+    if (productDetailModalElement) {
+        // Creamos una instancia del modal de Bootstrap
+        const productDetailModal = new bootstrap.Modal(productDetailModalElement);
 
-if (filterButtons.length > 0 && productCards.length > 0) {
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // 1. Quitar 'active' de todos los botones de filtro
-            filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Referencias a los elementos dentro del modal para rellenar dinámicamente
+        const modalImage = productDetailModalElement.querySelector('.product-modal-image');
+        const modalTitle = productDetailModalElement.querySelector('.product-modal-title');
+        const modalPrice = productDetailModalElement.querySelector('.product-modal-price');
+        const modalDescription = productDetailModalElement.querySelector('.product-modal-description');
+        const modalSpecs = productDetailModalElement.querySelector('.product-modal-specs');
 
-            // 2. Añadir 'active' al botón clicado
-            button.classList.add('active');
+        // Seleccionamos todos los botones "Ver Detalle" que tienen data-bs-toggle y data-bs-target
+        const viewDetailButtons = document.querySelectorAll('.products__grid .btn[data-bs-toggle="modal"]');
 
-            // 3. Obtener la categoría del botón clicado
-            const category = button.dataset.category; // Usamos .dataset para data-category
+        if (viewDetailButtons.length > 0) {
+            viewDetailButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const productCol = button.closest('.col'); // La card está dentro de un .col
+                    if (productCol) {
+                        // Extraer la información de la card
+                        const imageElement = productCol.querySelector('.card-img-top');
+                        const nameElement = productCol.querySelector('.card-title');
+                        const priceElement = productCol.querySelector('.card-text');
 
-            // 4. Mostrar u ocultar tarjetas de producto
-            productCards.forEach(card => {
-                if (category === 'todos') {
-                    card.style.display = 'block'; // Muestra todas las tarjetas
-                } else {
-                    // Si la categoría de la tarjeta coincide con la categoría del botón
-                    if (card.dataset.category === category) {
-                        card.style.display = 'block'; // Muestra la tarjeta
-                    } else {
-                        card.style.display = 'none'; // Oculta la tarjeta
+                        const productId = productCol.dataset.productId; // Obtener el ID del producto
+                        const category = productCol.dataset.category; // Obtener la categoría del producto
+
+                        // Objeto de datos del producto para el modal
+                        const productData = {
+                            imageSrc: imageElement ? imageElement.src : 'assets/img/placeholder.jpg',
+                            imageAlt: imageElement ? imageElement.alt : 'Imagen de Producto',
+                            name: nameElement ? nameElement.textContent : 'Producto Desconocido',
+                            price: priceElement ? priceElement.textContent : '$XXX.XXX',
+                            description: `Descripción detallada para ${nameElement ? nameElement.textContent : 'este producto'}. Este es un ejemplo de texto para el modal.`, // Ejemplo de descripción
+                            specs: [ // Ejemplo de especificaciones
+                                `<strong>Categoría:</strong> ${category.charAt(0).toUpperCase() + category.slice(1)}`,
+                                `<strong>ID del Producto:</strong> ${productId}`,
+                                `<strong>Condición:</strong> Reacondicionado` // Hardcoded por ahora
+                            ]
+                        };
+
+                        // Rellenar el modal con la información del producto
+                        modalImage.src = productData.imageSrc;
+                        modalImage.alt = productData.imageAlt;
+                        modalTitle.textContent = productData.name;
+                        modalPrice.textContent = productData.price;
+                        modalDescription.textContent = productData.description;
+
+                        // Limpiar y rellenar las especificaciones
+                        modalSpecs.innerHTML = '';
+                        productData.specs.forEach(spec => {
+                            const li = document.createElement('li');
+                            li.innerHTML = spec;
+                            modalSpecs.appendChild(li);
+                        });
                     }
-                }
+                });
+            });
+        }
+    }
+
+
+    // --- Lógica de Filtrado de Productos por Categoría (Catálogo con Bootstrap Display) ---
+    // Solo si los botones de filtro existen en la página actual (ej. catalogo.html)
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const productCols = document.querySelectorAll('.products__grid .col');
+
+    if (filterButtons.length > 0 && productCols.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 1. Quitar 'active' y 'btn-primary' de todos los botones de filtro
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'btn-primary');
+                    btn.classList.add('btn-outline-primary');
+                });
+
+                // 2. Añadir 'active' y 'btn-primary' al botón clicado
+                button.classList.add('active', 'btn-primary');
+                button.classList.remove('btn-outline-primary');
+
+                // 3. Obtener la categoría del botón clicado
+                const category = button.dataset.category;
+
+                // 4. Mostrar u ocultar columnas de producto usando la clase 'd-none' de Bootstrap
+                productCols.forEach(col => {
+                    if (category === 'todos') {
+                        col.classList.remove('d-none'); // Muestra todas las columnas
+                    } else {
+                        if (col.dataset.category === category) {
+                            col.classList.remove('d-none'); // Muestra la columna
+                        } else {
+                            col.classList.add('d-none'); // Oculta la columna
+                        }
+                    }
+                });
             });
         });
-    });
-}
-    
+    }
+
+    // --- Lógica del Formulario de Contacto (contacto.html) ---
+    const contactForm = document.getElementById('contactForm');
+    const successModalElement = document.getElementById('successModal');
+
+    // Solo si el formulario de contacto y el modal de éxito existen en la página actual
+    if (contactForm && successModalElement) {
+        // Crear una instancia del modal de Bootstrap
+        const successModal = new bootstrap.Modal(successModalElement);
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Previene el envío del formulario por defecto
+
+            // Aquí podrías agregar lógica para enviar los datos del formulario
+            // Por ahora, solo mostramos el modal de éxito.
+
+            // Muestra el modal de éxito
+            successModal.show();
+
+            // Opcional: Reiniciar el formulario después de un breve retraso o cuando el modal se cierra
+            // Para reiniciarlo inmediatamente:
+            contactForm.reset();
+        });
+    }
 });

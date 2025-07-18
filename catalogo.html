@@ -5,191 +5,304 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Te lo Vendo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
-    <header class="main-header">
-        <div class="container">
-            <a href="index.html" class="main-header__logo">
-                <img src="assets/img/logo0.png" alt="Logo Te lo Vendo" class="main-header__logo-img">
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo0.png" alt="Logo Te lo Vendo" class="d-inline-block align-text-top"
+                    width="auto" height="24">
             </a>
-            <nav class="main-nav">
-                <ul class="main-nav__list">
-                    <li class="main-nav__item"><a href="index.html" class="main-nav__link">Inicio</a></li>
-                    <li class="main-nav__item"><a href="catalogo.html" class="main-nav__link active">Catálogo</a></li>
-                    <li class="main-nav__item"><a href="acerca.html" class="main-nav__link">Acerca del Proyecto</a></li>
-                    <li class="main-nav__item"><a href="contacto.html" class="main-nav__link">Contacto</a></li>
-                </ul>
-            </nav>
-            <button class="menu-toggle" aria-label="Abrir menú">
-                <span class="menu-toggle__icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="catalogo.html">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acerca.html">Acerca del Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
-    <aside class="sidebar" id="sidebar">
-        <button class="sidebar__close-btn" aria-label="Cerrar menú">X</button>
-        <nav class="sidebar-nav">
-            <ul class="sidebar-nav__list">
-                <li class="sidebar-nav__item"><a href="index.html" class="sidebar-nav__link">Inicio</a></li>
-                <li class="sidebar-nav__item"><a href="catalogo.html" class="sidebar-nav__link">Catálogo</a></li>
-                <li class="sidebar-nav__item"><a href="acerca.html" class="sidebar-nav__link">Acerca del Proyecto</a>
-                <li class="sidebar-nav__item"><a href="contacto.html" class="sidebar-nav__link">Contacto</a></li>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+    </nav>
 
-    <main class="main-content">
-        <section class="catalog-section">
+    <main class="flex-grow-1 pt-5 mt-3">
+        <section class="catalog-page-section py-5">
             <div class="container">
-                <h1>Nuestro Catálogo</h1>
+                <h1 class="text-center mb-4">Nuestro Catálogo</h1>
 
-                <div class="filter-buttons">
-                    <button class="filter-button button button--secondary active" data-category="todos">Todos</button>
-                    <button class="filter-button button button--secondary" data-category="celulares">Celulares</button>
-                    <button class="filter-button button button--secondary" data-category="tablets">Tablets</button>
-                    <button class="filter-button button button--secondary" data-category="laptops">Laptops</button>
-                    <button class="filter-button button button--secondary" data-category="smartwatch">Smartwatch</button>
+                <div class="filter-buttons d-flex justify-content-center flex-wrap gap-2 mb-4">
+                    <button class="filter-button btn btn-outline-info active" data-category="todos">Todos</button>
+                    <button class="filter-button btn btn-outline-info" data-category="celulares">Celulares</button>
+                    <button class="filter-button btn btn-outline-info" data-category="tablets">Tablets</button>
+                    <button class="filter-button btn btn-outline-info" data-category="laptops">Laptops</button>
+                    <button class="filter-button btn btn-outline-info" data-category="smartwatch">Smartwatch</button>
                 </div>
 
-                <div class="products__grid" id="productsGrid">
-                    <div class="product-card" data-category="celulares">
-                        <img src="assets/img/i13.jpg" alt="iPhone 13" class="product-card__image">
-                        <h3 class="product-card__name">iPhone13</h3>
-                        <p class="product-card__price">$599.990</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-smartphone-003">Ver Detalle</button>
+                <div class="products__grid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="productsGrid">
+                    <div class="col" data-category="celulares" data-product-id="prod-smartphone-003">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/i13.jpg" class="card-img-top mx-auto mt-3" alt="iPhone 13"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">iPhone 13</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$599.990</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-smartphone-003">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="tablets" data-product-id="prod-tablet-001">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/ipad.jpg" class="card-img-top mx-auto mt-3" alt="Ipad Air 11"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Ipad Air 11</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$549.990</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-tablet-001">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="laptops" data-product-id="prod-laptop-002">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/lasus.jpg" class="card-img-top mx-auto mt-3" alt="Asus TUF Gaming A16"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">ASUS TUF Gaming A16</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$1.299.990</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-laptop-002">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="smartwatch" data-product-id="prod-smartwatch-001">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/sw.jpg" class="card-img-top mx-auto mt-3"
+                                alt="Smartwatch Garmin Vívoactive 5"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Garmin Vívoactive 5</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$399.990</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-smartwatch-001">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="laptops" data-product-id="prod-laptop-003">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/mair2015.jpg" class="card-img-top mx-auto mt-3" alt="Macbook Air 2015"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Macbook Air 2015</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$250.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-laptop-003">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="smartwatch" data-product-id="prod-smartwatch-004">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/aw6.jpg" class="card-img-top mx-auto mt-3" alt="Apple Watch Series 6"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Apple Watch Series 6</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$218.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-smartwatch-004">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="celulares" data-product-id="prod-smartphone-005">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/ip14.jpg" class="card-img-top mx-auto mt-3" alt="iPhone 14 Pro Max"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">iPhone 14 Pro Max</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$640.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-smartphone-005">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="laptops" data-product-id="prod-laptop-004">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/mp.jpg" class="card-img-top mx-auto mt-3" alt="Macbook Pro 16"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Macbook Pro 16</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$950.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-laptop-004">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="laptops" data-product-id="prod-laptop-005">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/nav.jpg" class="card-img-top mx-auto mt-3"
+                                alt="Notebook Asus Vivobook Pro"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Notebook Asus Vivobook Pro</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$1.020.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-laptop-005">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="laptops" data-product-id="prod-laptop-006">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/nlt.jpg" class="card-img-top mx-auto mt-3"
+                                alt="Notebook Lenovo Thinkpad T14"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Notebook Lenovo Thinkpad T14</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$680.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-laptop-006">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="celulares" data-product-id="prod-smartphone-006">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/sg.jpg" class="card-img-top mx-auto mt-3" alt="Samsung Galaxy s23 Plus"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Samsung Galaxy s23 Plus</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$520.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-smartphone-006">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-category="tablets" data-product-id="prod-tablet-002">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/ts.jpg" class="card-img-top mx-auto mt-3"
+                                alt="Tablet Samsung Galaxy Tab S9 Plus"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Tablet Samsung Galaxy Tab S9 Plus</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$850.000</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-tablet-002">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="product-card" data-category="tablets">
-                        <img src="assets/img/ipad.jpg" alt="Ipad Air 11" class="product-card__image">
-                        <h3 class="product-card__name"> Ipad Air 11 </h3>
-                        <p class="product-card__price">$549.990</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-tablet-001">Ver Detalle</button>
+                    <div class="col" data-category="laptops" data-product-id="prod-laptop-007">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/mair.jpg" class="card-img-top mx-auto mt-3" alt="MacBook Air M2"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">MacBook Air M2</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$1.199.990</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-laptop-007">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="product-card" data-category="laptops">
-                        <img src="assets/img/lasus.jpg" alt=" Asus TUF Gaming A16" class="product-card__image">
-                        <h3 class="product-card__name">ASUS TUF Gaming A16</h3>
-                        <p class="product-card__price">$1.299.990</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-laptop-002">Ver Detalle</button>
+                    <div class="col" data-category="celulares" data-product-id="prod-smartphone-007">
+                        <div class="card h-100 text-center shadow-sm">
+                            <img src="assets/img/ss24.jpg" class="card-img-top mx-auto mt-3" alt="Samsung S24 Ultra"
+                                style="max-width: 200px; height: 180px; object-fit: contain;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Samsung S24 Ultra</h5>
+                                <p class="card-text text-primary fw-bold fs-5">$999.990</p>
+                                <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#productDetailModal" data-product-id="prod-smartphone-007">Ver
+                                    Detalle</button>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="product-card" data-category="smartwatch">
-                        <img src="assets/img/sw.jpg" alt="Smartwatch Garmin Vívoactive 5 " class="product-card__image">
-                        <h3 class="product-card__name">Garmin Vívoactive 5</h3>
-                        <p class="product-card__price">$399.990</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-smartwatch-001">Ver Detalle</button>
-                    </div>
-
-                    <div class="product-card" data-category="laptops">
-                        <img src="assets/img/mair2015.jpg" alt="Macbook Air 2015" class="product-card__image">
-                        <h3 class="product-card__name">Macbook Air 2015</h3>
-                        <p class="product-card__price">$250.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-laptop-003">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="smartwatch">
-                        <img src="assets/img/aw6.jpg" alt="Apple Watch Series 6" class="product-card__image">
-                        <h3 class="product-card__name">Apple Watch Series 6</h3>
-                        <p class="product-card__price">$218.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-smartwatch-004">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="celulares">
-                        <img src="assets/img/ip14.jpg" alt="iPhone 14 Pro Max" class="product-card__image">
-                        <h3 class="product-card__name">iPhone 14 Pro Max</h3>
-                        <p class="product-card__price">$640.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-smartphone-005">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="laptops">
-                        <img src="assets/img/mp.jpg" alt="Macbook Pro 16" class="product-card__image">
-                        <h3 class="product-card__name">Macbook Pro 16</h3>
-                        <p class="product-card__price">$950.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-laptop-004">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="laptops">
-                        <img src="assets/img/nav.jpg" alt="Notebook Asus Vivobook Pro" class="product-card__image">
-                        <h3 class="product-card__name">Notebook Asus Vivobook Pro</h3>
-                        <p class="product-card__price">$1.020.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-laptop-005">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="laptops">
-                        <img src="assets/img/nlt.jpg" alt="Notebook Lenovo Thinkpad T14" class="product-card__image">
-                        <h3 class="product-card__name">Notebook Lenovo Thinkpad T14</h3>
-                        <p class="product-card__price">$680.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-laptop-006">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="celulares">
-                        <img src="assets/img/sg.jpg" alt="Samsung Galaxy s23 Plus" class="product-card__image">
-                        <h3 class="product-card__name">Samsung Galaxy s23 Plus</h3>
-                        <p class="product-card__price">$520.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-smartphone-006">Ver Detalle</button>
-                    </div>
-                    <div class="product-card" data-category="tablets">
-                        <img src="assets/img/ts.jpg" alt="Tablet Samsung Galaxy Tab S9 Plus" class="product-card__image">
-                        <h3 class="product-card__name">Tablet Samsung Galaxy Tab S9 Plus</h3>
-                        <p class="product-card__price">$850.000</p>
-                        <button class="product-card__button button button--secondary"
-                            data-product-id="prod-tablet-002">Ver Detalle</button>
-                    </div>
-
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-info">
-                <p>&copy; 2025 Te lo Vendo. Todos los derechos reservados.</p>
-                <p>Diseñado con pasión por Daniela Rodríguez</p>
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <div class="footer-info mb-3">
+                <p class="mb-1">&copy; 2025 Te lo Vendo. Todos los derechos reservados.</p>
+                <p class="mb-0">Diseñado con pasión por Daniela Rodríguez</p>
             </div>
-            <div class="social-links">
-                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
-                    <img src="assets/img/i.png" alt="Instagram">
+            <div class="social-links d-flex justify-content-center gap-3">
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="text-white">
+                    <img src="assets/img/i.png" alt="Instagram" width="30" height="30">
                 </a>
-                <a href="https://facebook.com" target="_blank" aria-label="Facebook">
-                    <img src="assets/img/f.png" alt="Facebook">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-white">
+                    <img src="assets/img/f.png" alt="Facebook" width="30" height="30">
                 </a>
-                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
-                    <img src="assets/img/l.png" alt="LinkedIn">
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-white">
+                    <img src="assets/img/l.png" alt="LinkedIn" width="30" height="30">
                 </a>
             </div>
         </div>
     </footer>
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close-button">&times;</span>
-            <div class="modal-body">
-                <img src="assets/img/placeholder.jpg" alt="Imagen del Producto" class="modal-image">
-                <div class="modal-details">
-                    <h3 class="modal-title">Nombre del Producto</h3>
-                    <p class="modal-price">$999.990</p>
-                    <p class="modal-description">Aquí va una descripción detallada del producto. Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.</p>
-                    <ul class="modal-specs">
-                        <li>**Especificación 1:** Detalle técnico</li>
-                        <li>**Especificación 2:** Otra característica</li>
-                        <li>**Condición:** Reacondicionado</li>
-                    </ul>
-                    <button class="button button--primary modal-add-to-cart">Añadir al Carrito</button>
+
+    <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img src="assets/img/placeholder.jpg" alt="Imagen del Producto"
+                                class="img-fluid mb-3 product-modal-image"
+                                style="max-height: 300px; object-fit: contain;">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="product-modal-title fs-4">Nombre del Producto</h3>
+                            <p class="product-modal-price fs-5 text-primary fw-bold">$0.00</p>
+                            <p class="product-modal-description text-muted">Aquí va una descripción detallada del
+                                producto.</p>
+                            <h6 class="mt-4">Especificaciones:</h6>
+                            <ul class="product-modal-specs list-unstyled">
+                                <li><strong>Condición:</strong> Reacondicionado</li>
+                            </ul>
+                            <button class="btn btn-primary mt-3 product-modal-add-to-cart">Añadir al Carrito</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

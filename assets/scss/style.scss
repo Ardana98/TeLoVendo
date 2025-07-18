@@ -1,36 +1,25 @@
 // assets/scss/style.scss
 
-// 1. Abstracts
-// Si tuviera mixins: @use 'abstracts/mixins';
-// Si tuviera funciones: @use 'abstracts/functions';
+// 1. Importa primero tus personalizaciones de Bootstrap
+// Este archivo _bootstrap-custom.scss ya importa el core de Bootstrap
+@use 'bootstrap-custom';
 
-// 2. Base
+// 2. Luego, importa tus parciales base (que complementan o resetean estilos)
+// Asegúrate de que estos archivos no contengan reglas CSS de layout o componentes
+// que ahora manejará Bootstrap. Nos encargaremos de esto en el Paso 3.
 @use 'base/reset';
-@use 'base/typography'; // Asegúrate de que este archivo use @use 'abstracts/config' para las variables
-@use 'base/global-styles'; // Si tienes un archivo de colores
+@use 'base/typography';
+@use 'base/global-styles';
 
 
-// 3. Layout
-@use 'layout/common-layout';
-@use 'layout/sidebar'; 
+
+@use 'layout/common-layout'; 
 @use 'layout/header';
 @use 'layout/footer';
 @use 'layout/hero-section';
 @use 'layout/promo-banner-section';
 @use 'layout/sections';
+@use 'layout/sidebar';
 
-// 4. Components
-@use 'components/button';
-@use 'components/product-card';
-@use 'components/filter-buttons'; // Importa este DESPUÉS de 'button' porque usa @extend .button
-@use 'components/form'; // Si ya lo tenías
-@use 'components/modal'; // Si ya lo tenías
 
-// 5. Pages (si tuviera)
-// @use 'pages/home';
-// @use 'pages/catalog';
-// @use 'pages/contact';
-
-// 6. Themes (si tuviera)
-// @use 'themes/dark';
 
