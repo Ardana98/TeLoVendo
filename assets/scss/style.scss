@@ -1,12 +1,12 @@
 // assets/scss/style.scss
 
-// 1. Importa primero tus personalizaciones de Bootstrap
+// 1. Importar primero mis personalizaciones de Bootstrap
 // Este archivo _bootstrap-custom.scss ya importa el core de Bootstrap
 @use 'bootstrap-custom';
 
-// 2. Luego, importa tus parciales base (que complementan o resetean estilos)
-// Asegúrate de que estos archivos no contengan reglas CSS de layout o componentes
-// que ahora manejará Bootstrap. Nos encargaremos de esto en el Paso 3.
+// 2. Luego, importar mis parciales base (que complementan o resetean estilos)
+// Asegurarse de que estos archivos no contengan reglas CSS de layout o componentes
+// que ahora manejará Bootstrap. 
 @use 'base/reset';
 @use 'base/typography';
 @use 'base/global-styles';
@@ -14,12 +14,8 @@
 
 
 @use 'layout/common-layout'; 
-@use 'layout/header';
 @use 'layout/footer';
 @use 'layout/hero-section';
 @use 'layout/promo-banner-section';
 @use 'layout/sections';
-@use 'layout/sidebar';
-
-
 

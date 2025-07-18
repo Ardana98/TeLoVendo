@@ -4,25 +4,15 @@
 .main-footer {
     background-color: config.$color-amazon-dark-blue;
     color: config.$color-white;
-    padding: config.$spacing-medium 0;
-    text-align: center;
+    padding: config.$spacing-medium 0; // Mantenemos este para control exacto del padding
     font-size: config.$font-size-small;
-    margin-top: auto;/*permite que el footer se mantenga en la parte inferior*/
+    margin-top: auto; /* crucial para el "Sticky Footer" */
 
-    .container {
-        display: flex;
-        flex-direction: row;
-        // gap: config.$spacing-x-small;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-    }
-   // Estilos para el contenedor de los enlaces
+    // El .container dentro del footer ahora se manejará con clases de Bootstrap en el HTML
+    // El .social-links (display y gap) también se manejarán con clases de Bootstrap en el HTML
+    
+    // Estilos específicos para los enlaces sociales que Bootstrap no cubre
     .social-links {
-        display: flex;
-        gap: config.$spacing-medium;
-
-        // Estilos para los enlaces <a>
         a {
             transition: transform 0.2s ease-in-out;
 
@@ -30,12 +20,10 @@
                 transform: scale(1.1);
             }
 
-            // Estilos para las imágenes <img> dentro de los enlaces
             img {
                 width: 30px;
                 height: 30px;
             }
         }
     }
-
 }

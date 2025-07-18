@@ -2,17 +2,13 @@
 
 @use '../abstracts/config'; 
 
-.container {
+/* .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 config.$spacing-medium; // Padding lateral para que no se me pegue a los bordes
 
-  // Media query para que el contenedor ocupe todo el ancho en pantallas pequeñas
-    /* @media (max-width: config.$breakpoint-medium) { // Usa el breakpoint que tengo definido en _config.scss
-        max-width: 100%; // ¡El contenedor ahora ocupará el 100% del ancho de la pantalla!
-        
-    } */
-}
+  
+} */
 
  // Esta regla es CRUCIAL para el "Sticky Footer".
 .main-content {

@@ -10,162 +10,143 @@ Este proyecto ha sido desarrollado como parte de un entregable de Front-End, dem
 
 ## Características Principales (Requerimientos Funcionales)
 
-El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave:
+El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave, ahora potenciadas por **Bootstrap 5.3.7**:
 
--   **Página Principal (Inicio):** Una bienvenida atractiva con un banner promocional que destaca ofertas, y una sección de "Novedades y Destacados" mostrando productos populares.
--   **Catálogo de Productos:** Un listado completo de nuestra electrónica reacondicionada, organizado por categorías. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
--   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un modal que muestra una imagen ampliada del producto, su nombre, precio y una descripción detallada (estática por ahora, pero lista para ser dinámica).
+-   **Página Principal (Inicio):** Una bienvenida atractiva con un banner que destaca ofertas y **Carousel de imágenes (implementado con Bootstrap)** para la sección de "Novedades y Destacados" mostrando productos populares.
+-   **Catálogo de Productos:** Un listado completo de nuestra electrónica reacondicionada, organizado por categorías e implementado con **Cards de Bootstrap**. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
+-   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un **Modal de Bootstrap** que muestra una imagen ampliada del producto, su nombre, precio y una descripción detallada (estática por ahora, pero lista para ser dinámica), además, se implementó un boton de acción "añadir al carrito".
 -   **Página "Acerca del Proyecto":** Una sección dedicada a explicar los objetivos de "Te lo Vendo" y presentar a los responsables detrás de este portal.
--   **Formulario de Contacto:** Una interfaz clara y funcional para que los usuarios puedan enviar consultas o comentarios directamente al equipo de "Te lo Vendo", incluyendo campos para nombre, apellido, email, teléfono y mensaje.
--   **Navegación Intuitiva y Responsiva:** Un menú principal claro en la parte superior, que se transforma en un práctico menú de hamburguesa lateral para una navegación fluida en dispositivos móviles y tablets. Los enlaces activos se resaltan para indicar la ubicación actual del usuario.
-  * **`Barra de Navegación Fija`**: El menú principal permanece anclado en la parte superior de la ventana, permitiendo a los usuarios una navegación constante y un acceso rápido a las opciones clave, sin importar su posición en la página.
-  * **`Diseño de Layout Consistente`**: El pie de página permanece siempre visible en la parte inferior de la ventana, incluso en páginas con poco contenido, asegurando una experiencia de usuario consistente y profesional.
+-   **Formulario de Contacto:** Una interfaz clara y funcional para que los usuarios puedan enviar consultas o comentarios directamente al equipo de "Te lo Vendo". **Al llenar todos los campos y presionar "enviar el formulario, un Modal de Bootstrap** confirma el "guardado exitosamente" del mensaje.
+-   **Navegación Intuitiva y Responsiva:** Un menú principal claro en la parte superior, implementado con el **componente Navbar de Bootstrap**.
+    * **`Menú Hamburguesa`**: Para entornos móviles y tablets, la Navbar incorpora el práctico "menú hamburguesa" de Bootstrap para una navegación fluida.
+    * **`Barra de Navegación Fija`**: El menú principal permanece anclado en la parte superior de la ventana (`fixed-top`), permitiendo a los usuarios una navegación constante.
+    * **`Diseño de Layout Consistente`**: El pie de página (`main-footer`) permanece siempre visible en la parte inferior de la ventana, incluso en páginas con poco contenido, asegurando una experiencia de usuario consistente y profesional.
 
 ## 🛠️ Aspectos Técnicos y Buenas Prácticas
-Este proyecto ha sido construido siguiendo rigurosos estándares y buenas prácticas de desarrollo Front-End:
+
+Este proyecto ha sido construido siguiendo rigurosos estándares y buenas prácticas de desarrollo Front-End, con **Bootstrap 5.3.7** como framework principal:
 
 -   **HTML Semántico:** Todo el marcado HTML utiliza etiquetas semánticas (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`, `<h1>`, `<h2>`, etc.) para asegurar la estructura lógica del contenido, mejorar la accesibilidad para lectores de pantalla y optimizar el SEO.
 
--   **Arquitectura CSS: Metodología BEM y Sass Modular (7-1 Pattern)**
+-   **Arquitectura CSS: Integración de Bootstrap, Sass Modular (7-1 Pattern) y BEM**
 
-    Para garantizar un código CSS robusto, mantenible y escalable, este proyecto sigue una arquitectura modular basada en **Sass (SCSS)** y la metodología **BEM (Bloque, Elemento, Modificador)**.
+    Para garantizar un código CSS robusto, mantenible y escalable, este proyecto integra **Bootstrap 5.3.7** y sigue una arquitectura modular basada en **Sass (SCSS)** y la metodología **BEM (Bloque, Elemento, Modificador)**.
 
-    ### **1. Organización de Archivos Sass (7-1 Pattern)**
+    ### **1. Organización de Archivos Sass (7-1 Pattern Adaptado)**
 
-    El código SCSS se organiza en varios parciales (`_*.scss`) que se importan en un único archivo principal (`style.scss`), siguiendo la convención de la metodología 7-1 Pattern para una clara separación de responsabilidades:
+    El código SCSS se organiza en varios parciales (`_*.scss`) que se importan en un único archivo principal (`style.scss`), siguiendo la convención de la metodología 7-1 Pattern para una clara separación de responsabilidades, ahora con un enfoque en la integración de Bootstrap:
 
-    * **`style.scss`**: El archivo principal que actúa como manifiesto y centraliza todas las importaciones de los demás parciales. Es el único archivo que se compila a `style.css`.
+    * **`style.scss`**: El archivo principal que actúa como manifiesto y centraliza las importaciones de los demás parciales, incluido `_bootstrap-custom.scss`. Es el único archivo que se compila a `style.css`.
+    * **`_bootstrap-custom.scss` (NUEVO)**: Archivo clave donde se importa la librería Bootstrap y se sobrescriben sus variables por defecto (`$primary`, `$font-family-base`, etc.) con las variables de configuración del proyecto (`_config.scss`). También incluye estilos personalizados para componentes de Bootstrap (como el Carousel) que requieren un alto nivel de especificidad o el uso de mixins de Bootstrap.
 
     * **`abstracts/`**: Contiene archivos auxiliares de Sass que no producen CSS directamente, sino que son usados por otros parciales.
-        * `_config.scss`: Define variables globales (colores, tipografías, espaciados, sombras, breakpoints) para una gestión centralizada y fácil actualización de la identidad visual. **Cada parcial que utiliza estas variables importa `_config.scss` directamente.**
-        * `_mixins.scss`: Define mixins reutilizables para aplicar grupos de propiedades CSS de forma eficiente.
-        * `_functions.scss`: Define funciones personalizadas de Sass para cálculos o lógica compleja.
+        * `_config.scss`: Define variables globales (colores, tipografías, espaciados, sombras, breakpoints) para una gestión centralizada y fácil actualización de la identidad visual del proyecto y para la personalización de Bootstrap.
 
     * **`base/`**: Contiene los estilos base para elementos HTML y estilos globales que afectan a todo el documento.
         * `_reset.scss`: Incluye un reseteo o normalización de los estilos por defecto del navegador para asegurar consistencia.
-        * `_typography.scss`: Define estilos para elementos de texto puro (fuentes, tamaños, interlineado para `h1-h6`, `p`, `a`, `ul`, etc.).
-        * `_global-styles.scss`: Contiene estilos globales que afectan a `body` y otras propiedades fundamentales de la raíz del documento (como las configuraciones de Flexbox para el "sticky footer").
+        * `_typography.scss`: Define estilos base para elementos de texto (`body`, `a`) y encabezados (`h1-h6`), aplicando las fuentes y colores de la marca, complementando y sobrescribiendo las bases de Bootstrap.
+        * `_global-styles.scss`: Contiene estilos globales para `body` y otras propiedades fundamentales, como configuraciones de Flexbox para el "sticky footer".
 
     * **`layout/`**: Define la estructura y el posicionamiento de los componentes principales del sitio.
-        * `_common-layout.scss`: Contiene clases de ayuda para la estructura general del layout, como `.container` (para delimitar el ancho del contenido) y `.main-content` (clave para el "sticky footer").
-        * `_header.scss`: Estilos específicos para la cabecera principal (`.main-header`).
+        * `_common-layout.scss`: Contiene clases de ayuda para la estructura general del layout, como `.container` y `.main-content`.
         * `_footer.scss`: Estilos específicos para el pie de página (`.main-footer`).
-        * `_hero-section.scss`: Estilos para la sección de bienvenida (`.hero-section`).
-        * `_promo-banner-section.scss`: Estilos para la sección del banner promocional (`.promo-banner-section`).
-        * `_sections.scss`: Estilos para secciones generales del contenido (ej. `.featured-products-section`).
-        * `_sidebar.scss`: Estilos para el menú lateral/sidebar (`.sidebar`).
+        * `_hero-section.scss`: Estilos para la sección de bienvenida (`.hero-section`), que ahora integra el Carousel de Bootstrap.
+        * `_promo-banner-section.scss`: Estilos para la sección del banner promocional.
+        * `_sections.scss`: Estilos para secciones generales del contenido (ej. `.about-page-section`), con clases de Bootstrap incorporadas en el HTML.
 
-    * **`components/`**: Agrupa los estilos para componentes UI reutilizables y atómicos.
-        * `_button.scss`: Estilos para los botones (`.button`).
-        * `_product-card.scss`: Estilos para las tarjetas de producto (`.product-card`).
-        * `_filter-buttons.scss`: Estilos para los botones de filtro (`.filter-buttons`).
-        * `_form.scss`: Estilos para el formulario de contacto (`.contact-form`, `form-group`).
-        * `_modal.scss`: Estilos para la ventana modal de detalle de producto (`.modal`).
+    * **`components/`**: **Esta carpeta ha sido eliminada**, ya que sus estilos han sido reemplazados directamente por los componentes y las clases de utilidad de Bootstrap (ej. botones, formularios, tarjetas de producto, modales) o integrados en `_bootstrap-custom.scss` o parciales de `layout`.
 
-    * **`pages/` (si aplica):** Archivos específicos para estilos únicos de páginas concretas (ej. `_home.scss`, `_catalog.scss`).
+    * **`pages/` (si aplica):** Archivos específicos para estilos únicos de páginas concretas.
 
-    * **`themes/` (si aplica):** Estilos para diferentes temas del sitio (ej. `_dark.scss`).
+    * **`themes/` (si aplica):** Estilos para diferentes temas del sitio.
 
-    * **`vendors/` (si aplica):** Archivos de librerías o frameworks CSS de terceros (ej. `_normalize.scss`, `_swiper.scss`).
+    * **`vendors/` (si aplica):** Archivos de librerías o frameworks CSS de terceros.
 
     Esta modularización facilita la navegación, el mantenimiento y la colaboración al segregar responsabilidades de estilo en archivos dedicados, promoviendo la reutilización y escalabilidad del código.
 
-## Estructura de Directorios SCSS##:
+### **Estructura de Directorios SCSS (Actualizada):**
 
 La siguiente es una representación visual de la estructura de carpetas dentro de assets/scss/:
-
+```
 assets/
 └── scss/
-    ├── abstracts/
-    │   ├── _config.scss
-    │   
-    │   
-    ├── base/
-    │   ├── _global-styles.scss
-    │   ├── _reset.scss
-    │   ├── _typography.scss
-    │   
-    ├── components/
-    │   ├── _button.scss
-    │   ├── _filter-buttons.scss
-    │   ├── _form.scss
-    │   ├── _modal.scss
-    │   └── _product-card.scss
-    ├── layout/
-    │   ├── _common-layout.scss
-    │   ├── _footer.scss
-    │   ├── _header.scss
-    │   ├── _hero-section.scss
-    │   ├── _promo-banner-section.scss
-    │   ├── _sections.scss
-    │   └── _sidebar.scss
-    ├── pages/
-    │   └── # Aquí irían parciales específicos de cada página (ej. _home.scss, _catalog.scss)
-    ├── themes/
-    │   └── # Aquí irían parciales para diferentes temas (ej. _dark.scss)
-    ├── vendors/
-    │   └── # Aquí irían parciales para librerías CSS externas (ej. _normalize.scss)
-    └── style.scss
+├── abstracts/
+│   ├── _config.scss
+│   
+├── base/
+│   ├── _global-styles.scss
+│   ├── _reset.scss
+│   └── _typography.scss
+├── layout/
+│   ├── _common-layout.scss
+│   ├── _footer.scss
+│   ├── _hero-section.scss
+│   ├── _promo-banner-section.scss
+│   └── _sections.scss
+├── pages/
+│   └── # Aquí irían parciales específicos de cada página (ej. _home.scss, _catalog.scss)
+├── themes/
+│   └── # Aquí irían parciales para diferentes temas (ej. _dark.scss)
+├── vendors/
+│   └── # Aquí irían parciales para librerías CSS externas (ej. _normalize.scss)
+├── _bootstrap-custom.scss # Archivo para personalización de Bootstrap
+└── style.scss             # Archivo principal que importa todo
+```
 
-### **2. Implementación de la Metodología BEM**
+### **2. Implementación de la Metodología BEM (Complemento con Bootstrap)**
 
-    Adopción de BEM para nombrar las clases CSS, lo que garantiza una alta modularidad, reusabilidad y especificidad plana, reduciendo conflictos y mejorando la legibilidad del HTML y SCSS.
+    La metodología BEM se sigue para nombrar las clases CSS personalizadas, lo que garantiza una alta modularidad, reusabilidad y especificidad plana. Esto se combina con el uso extensivo de las clases de utilidad y componentes de Bootstrap para la mayor parte del diseño.
 
-  - **Bloques:** Representan componentes independientes y reutilizables (ej., `main-header`, `product-card`, `contact-form`, `modal`).
-    -   **Elementos:** Son partes de un bloque que no tienen significado por sí solas fuera del bloque (ej., `main-header__logo`, `product-card__image`, `main-nav__list`). Se usa la sintaxis `bloque__elemento`.
-    -   **Modificadores:** Son variaciones de un bloque o un elemento que cambian su apariencia o comportamiento (ej., `button--primary`, `modal--active`). Se usa la sintaxis `bloque--modificador` o `bloque__elemento--modificador`.
+  - **Bloques:** Representan componentes independientes y reutilizables (ej., `main-header` (en desuso), `contact-form`, `main-footer`).
+    -   **Elementos:** Son partes de un bloque (ej., `main-footer__info`).
+    -   **Modificadores:** Variaciones de un bloque o un elemento.
 
-   **Justificación de Decisiones Específicas (Flexibilidad BEM):**
+   **Justificación de Decisiones Específicas (Flexibilidad BEM y Bootstrap):**
 
-    Si bien la metodología BEM promueve estrictamente la sintaxis `bloque__elemento` para todas las partes de un bloque, en este proyecto se ha aplicado un **enfoque pragmático** para ciertos elementos, como:
+    El proyecto adopta un enfoque pragmático para BEM, especialmente al integrar Bootstrap:
 
-  -   **`modal-title`, `modal-price`, `modal-description`:**
-        -   En lugar de `modal__title`, `modal__price`, `modal__description`, se utilizó un solo guion (`-`).
-        -   **Justificación:** Estos elementos son detalles atómicos dentro del bloque `modal-body` y no se prevé que tengan sub-elementos complejos propios (ej., `price__currency`). La clase con guion simple sigue siendo **claramente contextual** al `modal` (`modal-price` no se confundirá con otro `price` en el sitio). Además, esta elección contribuye a una **lectura más fluida del HTML** para estos casos específicos, sin comprometer los principios de modularidad y especificidad plana de BEM. Los estilos se manejan mediante anidamiento en Sass (`.modal-details .modal-price`), lo que mantiene la encapsulación.
+  -   **`modal-title`, `modal-body` (ejemplos de antes):** Ahora son **componentes directos de Bootstrap** que ya tienen sus propias clases (`.modal-title`, `.modal-body`). No se aplican prefijos BEM custom a estos, sino que se utilizan las clases de Bootstrap.
+    -   **Justificación:** Se prioriza el uso de la estructura y clases predefinidas de Bootstrap para sus componentes estándar, reduciendo la necesidad de CSS personalizado.
 
-    -   **`form-group` dentro de `contact-form`:**
-        -   `form-group` es una clase genérica para agrupar un `label` y un `input/textarea`.
-        -   **Justificación:** Se decidió usar `form-group` como un "micro-bloque" conceptualmente reusable que encapsula elementos de formulario. Aunque no tiene el prefijo `contact-form__` en el HTML, su pertenencia al `contact-form` está garantizada por el **anidamiento de estilos en Sass** (`.contact-form .form-group { ... }`). Esto permite que el concepto `form-group` sea potencialmente reutilizable en otros formularios si se necesitara, mientras que sus estilos permanecen correctamente acoplados al contexto del `contact-form` en el SCSS.
+    -   **`form-group` y otros elementos de formulario:** Ahora se utilizan las clases de formulario de Bootstrap como `mb-3` (margin-bottom), `form-label`, `form-control`.
+        -   **Justificación:** Se aprovechan las clases de utilidad y de componentes de formulario de Bootstrap, que son altamente personalizables a través de variables de Sass en `_bootstrap-custom.scss` y ofrecen una base robusta y responsiva.
 
-    Esta implementación de BEM busca la **máxima legibilidad y mantenibilidad** del código CSS, adaptando la estricta convención de nomenclatura a las necesidades y claridad del proyecto, sin desviarse de los principios fundamentales de la metodología.
+    Esta implementación de BEM y la integración de Bootstrap buscan la **máxima legibilidad, mantenibilidad y eficiencia** del código CSS, adaptando las convenciones a la sinergia entre el diseño personalizado y el framework.
 
--   **Guía de Estilos Visual:** Se ha establecido una guía visual a través de la definición de variables y la construcción de componentes reutilizables (como las tarjetas de producto y botones), que incluyen tipografías y una paleta de colores coherente (destacando el amarillo Amazon para elementos clave).
+-   **Guía de Estilos Visual:** Se ha establecido una guía visual a través de la definición de variables en `_config.scss` y la construcción de componentes reutilizables (ahora muchos de ellos de Bootstrap, personalizados a través de variables), que incluyen tipografías y una paleta de colores coherente (destacando el naranja Amazon para elementos clave).
 -   **JavaScript Interactivo:**
-    -   Manejo de la interactividad del **modal de productos**, poblando dinámicamente el título, precio e imagen del producto seleccionado.
+    -   Uso del **bundle de JavaScript de Bootstrap** para el manejo de componentes como la Navbar (menú hamburguesa) y los Modals.
     -   Implementación de la **funcionalidad de filtrado por categoría** en el catálogo, mostrando u ocultando productos según la selección del usuario.
-    -   Lógica para el **menú de hamburguesa** que abre y cierra el menú lateral responsivo.
-    -   Control de la **clase activa** en la navegación para indicar la página actual.
--   **Responsividad:** El diseño es completamente responsivo, adaptándose elegantemente a diferentes tamaños de pantalla (desktops, tablets, móviles) utilizando técnicas de CSS (Flexbox, Media Queries) para una experiencia de usuario óptima en cualquier dispositivo.
-Para optimizar la adaptabilidad , he definido puntos de quiebre claves en `_config.scss`, los cuales, se han aplicado en los parciales de layout y componentes: 
-  - `$breakpoint-small` (≤576px) para ajustar rejillas y tipografías.  
-  - `$breakpoint-medium` (≤768px) para reordenar columnas y mostrar/ocultar elementos (como el menú hamburguesa).  
-  - `$breakpoint-large` (≤992px) y mayores para diseños de múltiples columnas.  
-- **Ejemplo de uso:**  
-  ```scss
-  @media (max-width: config.$breakpoint-medium) {
-    .main-nav { display: none; }
-    .menu-toggle { display: block; }
-  }
-
-
+    -   Lógica para mostrar un **Modal de Bootstrap** al enviar el formulario de contacto.
+-   **Responsividad:** El diseño es completamente responsivo, adaptándose elegantemente a diferentes tamaños de pantalla (desktops, tablets, móviles) utilizando el sistema de rejilla, utilidades y mixins de media query de Bootstrap para una experiencia de usuario óptima en cualquier dispositivo.
+    * **Puntos de Quiebre:** Se han definido puntos de quiebre claves en `_config.scss` y se aplican mediante los mixins `media-breakpoint-up()` y `media-breakpoint-down()` de Bootstrap, como se ve en los estilos del Carousel.
 -   **Organización de Carpetas:** Estructura de carpetas clara y estándar (`assets/css`, `assets/js`, `assets/img`, `assets/scss`) que facilita la navegación y el mantenimiento del proyecto.
 
 ## Rol del Desarrollador Front-End y Decisiones Clave
 
-Como desarrolladora Front-End de "Te lo Vendo", mi rol principal ha sido traducir el diseño visual en una interfaz de usuario interactiva y funcional. Las decisiones clave tomadas incluyen:
+Como desarrolladora Front-End de "Te lo Vendo", mi rol principal ha sido traducir el diseño visual en una interfaz de usuario interactiva y funcional, priorizando la eficiencia y la estandarización con Bootstrap. Las decisiones clave tomadas incluyen:
 
+-   **Integración y Personalización de Bootstrap:** Decisión fundamental para acelerar el desarrollo, asegurar la responsividad y mantener la consistencia, personalizando sus variables globales vía Sass para la identidad de marca.
 -   **Elección de Sass:** Para optimizar la escritura y el mantenimiento del CSS, aprovechando variables, anidación y modularización.
--   **Implementación del Modal con JavaScript:** Para mostrar detalles de productos sin navegar a una nueva página, mejorando la experiencia del usuario. La decisión inicial de no usar JSON para los datos del modal se tomó para cumplir con el alcance del entregable actual, priorizando la funcionalidad básica.
--   **Filtrado por Categorías:** Implementado directamente con JavaScript y atributos `data-` en el HTML, ofreciendo una interactividad esencial para el catálogo de manera eficiente para este alcance.
--   **Diseño Responsivo con Mobile-First:** Priorizando la experiencia móvil desde el inicio para asegurar la adaptabilidad en todos los dispositivos.
--   **Gestión del Espaciado y Contraste Visual:** Ajustes precisos de `padding` y `margin` y la incorporación de un fondo suave y una imagen en el Hero para mejorar la legibilidad y el atractivo visual.
--   **Integración de Logo y Banner:** Elementos clave para la identidad de marca y la promoción en la página principal.
+-   **Implementación de Modals con JavaScript y Bootstrap:** Para mostrar detalles de productos y confirmaciones de formulario sin navegar a una nueva página, mejorando la experiencia del usuario de manera eficiente con el framework.
+-   **Filtrado por Categorías (JavaScript):** Implementado directamente con JavaScript y atributos `data-` en el HTML, ofreciendo una interactividad esencial para el catálogo de manera eficiente para este alcance.
+-   **Diseño Responsivo con Mobile-First:** Priorizando la experiencia móvil desde el inicio y apalancándose en las capacidades inherentes de Bootstrap.
+-   **Consolidación de CSS:** Eliminar parciales redundantes (`_header.scss`, `_sidebar.scss`, la carpeta `components/`) para mantener un código más limpio y modular, moviendo sus funcionalidades a Bootstrap o a parciales más generales.
 
 ## Cómo Ejecutar el Proyecto
 
-Para ver "Te lo Vendo" en acción, simplemente abre los archivos `index.html` o `catalogo.html` en tu navegador web.
+Para ver "Te lo Vendo" en acción, sigue estos pasos:
 
-Asegúrate de que tu entorno de desarrollo tenga Sass watch activo para compilar los archivos SCSS a CSS:
+1.  **Instala las dependencias de Bootstrap:**
+    ```bash
+    npm install
+    ```
+2.  **Compila tus archivos Sass a CSS:**
+    Asegúrate de que tu entorno de desarrollo tenga Sass watch activo para compilar los archivos SCSS a CSS:
+    ```bash
+    sass --watch assets/scss/style.scss:assets/css/style.css
+    ```
+3.  **Abre el proyecto:**
+    Simplemente abre los archivos `index.html` o `catalogo.html` en tu navegador web.
 
-```bash
-sass --watch assets/scss/style.scss:assets/css/style.css
+---

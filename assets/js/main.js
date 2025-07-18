@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const successModalElement = document.getElementById('successModal');
 
-    // Solo si el formulario de contacto y el modal de éxito existen en la página actual
+    
     if (contactForm && successModalElement) {
         // Crear una instancia del modal de Bootstrap
         const successModal = new bootstrap.Modal(successModalElement);
@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (event) => {
             event.preventDefault(); // Previene el envío del formulario por defecto
 
-            // Aquí podrías agregar lógica para enviar los datos del formulario
-            // Por ahora, solo mostramos el modal de éxito.
+            // Aquí se puede agregar lógica para enviar los datos del formulario
+            // Por ahora, solo mostrar el modal de éxito.
 
             // Muestra el modal de éxito
             successModal.show();

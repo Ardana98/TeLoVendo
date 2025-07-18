@@ -9,20 +9,20 @@
     background-attachment: fixed; // Efecto parallax
 
     padding: config.$spacing-xx-large 0; // Mucho padding arriba y abajo
-    text-align: center; // Centra el texto dentro de la sección
+    // text-align: center; // <<-- ¡Esta línea se elimina de aquí!
 
     h1 {
         font-size: config.$font-size-h1;
         margin-bottom: config.$spacing-medium;
-        color: inherit; // Para que herede el color del contenedor si lo defino
+        color: inherit;
     }
     p {
         font-size: config.$font-size-large;
         margin-bottom: config.$spacing-large;
-        max-width: 800px; // Limita el ancho del párrafo
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
-        color: inherit; // Para que herede el color del contenedor
+        color: inherit;
     }
     position: relative; // Necesario para el pseudo-elemento overlay
     &::before {

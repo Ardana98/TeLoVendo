@@ -14,8 +14,7 @@ $color-background-light: #f0f2f5; // Un gris muy, muy claro, casi blanco, pero c
 // Sombras para elementos interactivos o profundidad (inspirado en Amazon)
 $box-shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
 $box-shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
-$box-shadow-large: 0 8px 16px rgba(0, 0, 0, 0.2); // <-- ¡Esta es la que faltaba!
-
+$box-shadow-large: 0 8px 16px rgba(0, 0, 0, 0.2); 
 
 // Tipografías
 $font-family-primary: 'Amazon Ember', Arial, sans-serif; // Puedo usar Arial como fallback o Google Fonts
@@ -37,7 +36,7 @@ $spacing-xx-small: 4px;
 $spacing-x-small: 8px;
 $spacing-small: 12px;
 $spacing-medium: 20px;
-$spacing-large: 32px;
+$spacing-large: 32px; 
 $spacing-x-large: 48px;
 $spacing-xx-large: 64px;
 

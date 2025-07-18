@@ -3,14 +3,14 @@
 
 .promo-banner-section {
     padding: config.$spacing-large 0; // Padding arriba y abajo
-    text-align: center; // Centra el contenido (la imagen)
+    // text-align: center; // Centra el contenido (la imagen) ya no es necesario porque se maneja en el HTML
 
-    .promo-banner__image {
+   /*  .promo-banner__image {
         max-width: 100%; // Asegura que la imagen sea responsive
         height: auto;
         display: block; // Para que `margin: 0 auto` funcione
         margin: 0 auto; // Centra la imagen
         border-radius: config.$border-radius-medium;
         box-shadow: 0 4px 8px config.$box-shadow-small; // Sombra suave
-    }
+    } */
 }

@@ -1,11 +1,11 @@
 // assets/scss/_bootstrap-custom.scss
 
-// Importa las variables de configuración de tu proyecto
+// Importa las variables de configuración del proyecto
 @use 'abstracts/config' as *;
 
-// Sobrescribe las variables predeterminadas de Bootstrap con tus valores.
+// Sobrescribe las variables predeterminadas de Bootstrap con mis valores.
 // Estos son los colores base que Bootstrap usa para sus componentes (botones, fondos, texto, etc.)
-// ¡Asegúrate de que tus variables de 'config' existan y tengan sentido para Bootstrap!
+// ¡ Hay que asegurarse de que mis variables de 'config' existan y tengan sentido para Bootstrap!
 @use "../../node_modules/bootstrap/scss/bootstrap" with (
   // Colores principales de Bootstrap:
   $primary: $color-amazon-orange,         // Color principal de la marca para botones, enlaces, etc.
@@ -13,11 +13,11 @@
   $dark: $color-primary-text,             // Color para texto oscuro y fondos oscuros
   $light: $color-background-light,        // Color para fondos claros y texto claro
 
-  // Colores de estado (si los usas, son importantes para alertas, botones de estado)
-  // Puedes mapearlos a tus colores o usar los de Bootstrap si no tienes equivalentes directos
-  // Como no tienes colores específicos para 'info', 'success', 'warning', 'danger' en tu _config,
-  // podemos usar los colores por defecto de Bootstrap o asignar un color de tu paleta.
-  // Por ahora, te sugiero estos mapeos o dejarlos como están si no los necesitas específicamente:
+  // Colores de estado ( son importantes para alertas, botones de estado)
+  // Puedo mapearlos a mis colores o usar los de Bootstrap si no tengo equivalentes directos
+  // Como no tengo colores específicos para 'info', 'success', 'warning', 'danger' en mi _config,
+  // podemos usar los colores por defecto de Bootstrap o asignar un color de mi paleta.
+  // Por ahora, uso estos mapeos o dejarlos como están si no los necesito específicamente:
   $info: $color-amazon-light-blue, // Podría ser un azul más claro
   // $success: #198754, // Color verde por defecto de Bootstrap para éxito
   // $warning: #ffc107, // Color amarillo por defecto de Bootstrap para advertencia
@@ -25,16 +25,16 @@
 
   // Tipografía
   $font-family-base: $font-family-primary, // Fuente principal para todo el cuerpo
-  $headings-font-family: $font-family-primary, // O si tienes una fuente específica para títulos
+  $headings-font-family: $font-family-primary, // O si tengo una fuente específica para títulos
 
-  // Tamaños de fuente para títulos (puedes mapearlos a tus variables de _config)
+  // Tamaños de fuente para títulos (puedo mapearlos a mis variables de _config)
   $h1-font-size: $font-size-h1,
   $h2-font-size: $font-size-h2,
   $h3-font-size: $font-size-h3,
   $h4-font-size: $font-size-h4, // Bootstrap también tiene h4-h6
   
 
-  // Otros elementos que querrías sobrescribir
+  // Otros elementos puedo sobrescribir
   $body-color: $color-primary-text, // Color del texto principal del body
   $body-bg: $color-white,           // Color de fondo del body
   $link-color: $color-amazon-dark-blue, // Color por defecto para los enlaces
@@ -43,13 +43,12 @@
   // Border-radius
   $border-radius: $border-radius-small, // Radios de borde para componentes generales
   $border-radius-sm: $border-radius-small,
-  $border-radius-lg: $border-radius-medium, // Puedes usar medium para 'lg'
+  $border-radius-lg: $border-radius-medium, // Puedo usar medium para 'lg'
 
-  // Transiciones (puedes usar tus variables si quieres ser muy específico)
+  // Transiciones (puedo usar mis variables si quiero ser muy específica)
   $transition-base: all $transition-speed $transition-ease
 );
 
-// --- INICIO: Estilos personalizados del carrusel (movidos de _carousel.scss) ---
 // Ahora estos estilos están dentro del ámbito donde Bootstrap completo ya ha sido cargado.
 .carousel-section {
     .carousel {
@@ -76,19 +75,18 @@
         }
          // Altura para pantallas extra-extra-grandes (xxl, >=1400px)
         @include bootstrap.media-breakpoint-up(xxl) {
-            height: 450px; // Puedes ajustar este valor si aún quieres más altura en pantallas muy grandes
+            height: 450px; // Puedo ajustar este valor si aún quiero más altura en pantallas muy grandes
         }
 
 
         .carousel-inner {
-            // max-height: inherit;
-            height: 100%; // Hereda la altura máxima de .carousel
+    
+            height: 100%; 
         }
 
         .carousel-item {
             position: relative;
             height: 100%;
-            // max-height: inherit; // Hereda la altura máxima
             background-color: var(--bs-gray-dark);
             // display: flex;
             // align-items: center; // Centra el contenido verticalmente
