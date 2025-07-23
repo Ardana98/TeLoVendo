@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         style="max-width: 200px; height: 180px; object-fit: contain;">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text text-info fw-bold fs-5">$${product.price.toLocaleString('es-CL')}</p>
+                        <p class="card-text text-info fw-bold fs-5">$${product.price.toLocaleString('es-CL')} + IVA</p>
                         <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
                             data-bs-target="#productDetailModal" data-product-id="${product.id}">Ver Detalle</button>
                     </div>
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (modalImage) modalImage.src = product.imageSrc;
                 if (modalImage) modalImage.alt = product.name;
                 if (modalTitle) modalTitle.textContent = product.name;
-                if (modalPrice) modalPrice.textContent = `$${product.price.toLocaleString('es-CL')}`;
+                if (modalPrice) modalPrice.textContent = `$${product.price.toLocaleString('es-CL')} + IVA`;
                 if (modalDescription) modalDescription.textContent = product.description;
 
                 if (modalSpecs) {
