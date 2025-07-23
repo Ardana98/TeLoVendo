@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>${item.name} (x${item.quantity})</span>
                 <div class="d-flex align-items-center">
                     <input type="number" class="form-control form-control-sm me-2 cart-item-quantity" data-product-id="${item.id}" value="${item.quantity}" min="1" max="99" style="width: 70px;">
-                    <span class="fw-bold me-2">$${itemTotal.toLocaleString('es-CL')}</span>
+                    <span class="fw-bold me-2">$${Math.round(itemTotal).toLocaleString('es-CL')}</span>
                     <button class="btn btn-sm btn-outline-danger remove-from-cart-btn" data-product-id="${item.id}">&times;</button>
                 </div>
             `;
@@ -378,17 +378,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-        const netTotal = subtotal; // El subtotal es el neto antes de IVA
-        const ivaAmount = netTotal * IVA_RATE;
+        const netTotal = Math.round(subtotal); // Redondear el neto
+        const ivaAmount = Math.round(netTotal * IVA_RATE); // Redondear el IVA
         const subtotalIVAIncluded = netTotal + ivaAmount; // Valor total IVA incluido
 
         let despatchCharge = 0;
         // Solo aplicar cargo por despacho si el valor total (IVA incluido) es menor a $100.000
         if (subtotalIVAIncluded < DESPATCH_CHARGE_THRESHOLD) {
-            despatchCharge = subtotalIVAIncluded * DESPATCH_CHARGE_RATE;
+            despatchCharge = Math.round(subtotalIVAIncluded * DESPATCH_CHARGE_RATE); // Redondear el cargo por despacho
         }
         
-        const finalTotal = subtotalIVAIncluded + despatchCharge;
+        const finalTotal = Math.round(subtotalIVAIncluded + despatchCharge); // Redondear el total final
 
 
         cartSummaryDetails.innerHTML = `
