@@ -10,11 +10,28 @@ Este proyecto ha sido desarrollado como parte de un entregable de Front-End, dem
 
 ## Características Principales (Requerimientos Funcionales)
 
-El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave, ahora potenciadas por **Bootstrap 5.3.7**:
+El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave, ahora potenciadas por **Bootstrap 5.3.7** y lógica avanzada de JavaScript:
 
 -   **Página Principal (Inicio):** Una bienvenida atractiva con un banner que destaca ofertas y **Carousel de imágenes (implementado con Bootstrap)** para la sección de "Novedades y Destacados" mostrando productos populares.
--   **Catálogo de Productos:** Un listado completo de nuestra electrónica reacondicionada, organizado por categorías e implementado con **Cards de Bootstrap**. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
--   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un **Modal de Bootstrap** que muestra una imagen ampliada del producto, su nombre, precio y una descripción detallada (estática por ahora, pero lista para ser dinámica), además, se implementó un boton de acción "añadir al carrito".
+-   **Catálogo de Productos Dinámico:** Un listado completo de nuestra electrónica reacondicionada. Los productos se cargan **dinámicamente desde un arreglo de JavaScript**, facilitando su gestión. Está organizado por categorías e implementado con **Cards de Bootstrap**. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
+-   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un **Modal de Bootstrap** que muestra:
+    * Una imagen ampliada del producto.
+    * Su nombre, precio, código y una descripción detallada.
+    * Un **selector de cantidad** (`input type="number"`) que permite al usuario elegir cuántas unidades desea añadir.
+    * Un botón de acción "**Añadir al Carrito**".
+-   **Carrito de Compras y Totalizador Avanzado:**
+    * Permite a los usuarios **añadir productos al carrito** desde el modal de detalle.
+    * **Visualiza la lista de productos seleccionados** en tiempo real, indicando su nombre, cantidad y valor total individual.
+    * Permite **ajustar la cantidad** de un producto directamente en la lista del carrito y **eliminar productos** de la lista.
+    * Incluye un **resumen "totalizador"** detallado que muestra:
+        * **Valor Neto** (Subtotal).
+        * **Cálculo de IVA (19%)**.
+        * **Subtotal (IVA Incluido)**.
+        * **Cargo adicional por despacho del 5%**: Este cargo se aplica **solo si el "Subtotal (IVA Incluido)" de la compra es menor a $100.000**.
+        * **Total Final de la Compra**.
+    * Todas las **cifras monetarias se muestran redondeadas** a números enteros para una lectura clara y profesional.
+    * El estado del carrito se **persiste utilizando `localStorage`**, lo que significa que los productos permanecerán en el carrito incluso si el usuario recarga la página o cierra el navegador.
+    * Incluye un botón para **vaciar completamente el carrito**.
 -   **Página "Acerca del Proyecto":** Una sección dedicada a explicar los objetivos de "Te lo Vendo" y presentar a los responsables detrás de este portal.
 -   **Formulario de Contacto:** Una interfaz clara y funcional para que los usuarios puedan enviar consultas o comentarios directamente al equipo de "Te lo Vendo". **Al llenar todos los campos y presionar "enviar el formulario, un Modal de Bootstrap** confirma el "guardado exitosamente" del mensaje.
 -   **Navegación Intuitiva y Responsiva:** Un menú principal claro en la parte superior, implementado con el **componente Navbar de Bootstrap**.
@@ -64,49 +81,49 @@ Este proyecto ha sido construido siguiendo rigurosos estándares y buenas práct
 
     Esta modularización facilita la navegación, el mantenimiento y la colaboración al segregar responsabilidades de estilo en archivos dedicados, promoviendo la reutilización y escalabilidad del código.
 
-### **Estructura de Directorios SCSS (Actualizada):**
+    ### **Estructura de Directorios SCSS (Actualizada):**
 
-La siguiente es una representación visual de la estructura de carpetas dentro de assets/scss/:
-```
-assets/
-└── scss/
-├── abstracts/
-│   ├── _config.scss
-│   
-├── base/
-│   ├── _global-styles.scss
-│   ├── _reset.scss
-│   └── _typography.scss
-├── layout/
-│   ├── _common-layout.scss
-│   ├── _footer.scss
-│   ├── _hero-section.scss
-│   ├── _promo-banner-section.scss
-│   └── _sections.scss
-├── pages/
-│   └── # Aquí irían parciales específicos de cada página (ej. _home.scss, _catalog.scss)
-├── themes/
-│   └── # Aquí irían parciales para diferentes temas (ej. _dark.scss)
-├── vendors/
-│   └── # Aquí irían parciales para librerías CSS externas (ej. _normalize.scss)
-├── _bootstrap-custom.scss # Archivo para personalización de Bootstrap
-└── style.scss             # Archivo principal que importa todo
-```
+    La siguiente es una representación visual de la estructura de carpetas dentro de assets/scss/:
+    ```
+    assets/
+    └── scss/
+    ├── abstracts/
+    │   ├── _config.scss
+    │   
+    ├── base/
+    │   ├── _global-styles.scss
+    │   ├── _reset.scss
+    │   └── _typography.scss
+    ├── layout/
+    │   ├── _common-layout.scss
+    │   ├── _footer.scss
+    │   ├── _hero-section.scss
+    │   ├── _promo-banner-section.scss
+    │   └── _sections.scss
+    ├── pages/
+    │   └── # Aquí irían parciales específicos de cada página (ej. _home.scss, _catalog.scss)
+    ├── themes/
+    │   └── # Aquí irían parciales para diferentes temas (ej. _dark.scss)
+    ├── vendors/
+    │   └── # Aquí irían parciales para librerías CSS externas (ej. _normalize.scss)
+    ├── _bootstrap-custom.scss # Archivo para personalización de Bootstrap
+    └── style.scss             # Archivo principal que importa todo
+    ```
 
-### **2. Implementación de la Metodología BEM (Complemento con Bootstrap)**
+    ### **2. Implementación de la Metodología BEM (Complemento con Bootstrap)**
 
     La metodología BEM se sigue para nombrar las clases CSS personalizadas, lo que garantiza una alta modularidad, reusabilidad y especificidad plana. Esto se combina con el uso extensivo de las clases de utilidad y componentes de Bootstrap para la mayor parte del diseño.
 
-  - **Bloques:** Representan componentes independientes y reutilizables (ej., `main-header` (en desuso), `contact-form`, `main-footer`).
-    -   **Elementos:** Son partes de un bloque (ej., `main-footer__info`).
-    -   **Modificadores:** Variaciones de un bloque o un elemento.
+    -   **Bloques:** Representan componentes independientes y reutilizables (ej., `main-header` (en desuso), `contact-form`, `main-footer`).
+        -   **Elementos:** Son partes de un bloque (ej., `main-footer__info`).
+        -   **Modificadores:** Variaciones de un bloque o un elemento.
 
-   **Justificación de Decisiones Específicas (Flexibilidad BEM y Bootstrap):**
+    **Justificación de Decisiones Específicas (Flexibilidad BEM y Bootstrap):**
 
     El proyecto adopta un enfoque pragmático para BEM, especialmente al integrar Bootstrap:
 
-  -   **`modal-title`, `modal-body` (ejemplos de antes):** Ahora son **componentes directos de Bootstrap** que ya tienen sus propias clases (`.modal-title`, `.modal-body`). No se aplican prefijos BEM custom a estos, sino que se utilizan las clases de Bootstrap.
-    -   **Justificación:** Se prioriza el uso de la estructura y clases predefinidas de Bootstrap para sus componentes estándar, reduciendo la necesidad de CSS personalizado.
+    -   **`modal-title`, `modal-body` (ejemplos de antes):** Ahora son **componentes directos de Bootstrap** que ya tienen sus propias clases (`.modal-title`, `.modal-body`). No se aplican prefijos BEM custom a estos, sino que se utilizan las clases de Bootstrap.
+        -   **Justificación:** Se prioriza el uso de la estructura y clases predefinidas de Bootstrap para sus componentes estándar, reduciendo la necesidad de CSS personalizado.
 
     -   **`form-group` y otros elementos de formulario:** Ahora se utilizan las clases de formulario de Bootstrap como `mb-3` (margin-bottom), `form-label`, `form-control`.
         -   **Justificación:** Se aprovechan las clases de utilidad y de componentes de formulario de Bootstrap, que son altamente personalizables a través de variables de Sass en `_bootstrap-custom.scss` y ofrecen una base robusta y responsiva.
@@ -116,7 +133,8 @@ assets/
 -   **Guía de Estilos Visual:** Se ha establecido una guía visual a través de la definición de variables en `_config.scss` y la construcción de componentes reutilizables (ahora muchos de ellos de Bootstrap, personalizados a través de variables), que incluyen tipografías y una paleta de colores coherente (destacando el naranja Amazon para elementos clave).
 -   **JavaScript Interactivo:**
     -   Uso del **bundle de JavaScript de Bootstrap** para el manejo de componentes como la Navbar (menú hamburguesa) y los Modals.
-    -   Implementación de la **funcionalidad de filtrado por categoría** en el catálogo, mostrando u ocultando productos según la selección del usuario.
+    -   Implementación de la **carga dinámica y funcionalidad de filtrado por categoría** en el catálogo.
+    -   **Sistema de Carrito de Compras completo**: Lógica para añadir, eliminar y actualizar productos en el carrito, calcular totales (neto, IVA, despacho condicional), redondear cifras y persistir el carrito en `localStorage`.
     -   Lógica para mostrar un **Modal de Bootstrap** al enviar el formulario de contacto.
 -   **Responsividad:** El diseño es completamente responsivo, adaptándose elegantemente a diferentes tamaños de pantalla (desktops, tablets, móviles) utilizando el sistema de rejilla, utilidades y mixins de media query de Bootstrap para una experiencia de usuario óptima en cualquier dispositivo.
     * **Puntos de Quiebre:** Se han definido puntos de quiebre claves en `_config.scss` y se aplican mediante los mixins `media-breakpoint-up()` y `media-breakpoint-down()` de Bootstrap, como se ve en los estilos del Carousel.
@@ -129,7 +147,11 @@ Como desarrolladora Front-End de "Te lo Vendo", mi rol principal ha sido traduci
 -   **Integración y Personalización de Bootstrap:** Decisión fundamental para acelerar el desarrollo, asegurar la responsividad y mantener la consistencia, personalizando sus variables globales vía Sass para la identidad de marca.
 -   **Elección de Sass:** Para optimizar la escritura y el mantenimiento del CSS, aprovechando variables, anidación y modularización.
 -   **Implementación de Modals con JavaScript y Bootstrap:** Para mostrar detalles de productos y confirmaciones de formulario sin navegar a una nueva página, mejorando la experiencia del usuario de manera eficiente con el framework.
--   **Filtrado por Categorías (JavaScript):** Implementado directamente con JavaScript y atributos `data-` en el HTML, ofreciendo una interactividad esencial para el catálogo de manera eficiente para este alcance.
+-   **Gestión de Datos y Carrito con JavaScript:** Implementación robusta de la lógica para manejar el arreglo de productos, el carrito de compras, incluyendo:
+    * Carga dinámica y filtrado de productos.
+    * Manejo de la cantidad de ítems y la adición al carrito.
+    * Cálculo de subtotales, IVA, cargos de despacho condicionales y totales finales, con redondeo de cifras.
+    * **Persistencia del carrito** entre sesiones utilizando `localStorage`.
 -   **Diseño Responsivo con Mobile-First:** Priorizando la experiencia móvil desde el inicio y apalancándose en las capacidades inherentes de Bootstrap.
 -   **Consolidación de CSS:** Eliminar parciales redundantes (`_header.scss`, `_sidebar.scss`, la carpeta `components/`) para mantener un código más limpio y modular, moviendo sus funcionalidades a Bootstrap o a parciales más generales.
 
@@ -148,5 +170,3 @@ Para ver "Te lo Vendo" en acción, sigue estos pasos:
     ```
 3.  **Abre el proyecto:**
     Simplemente abre los archivos `index.html` o `catalogo.html` en tu navegador web.
-
----
