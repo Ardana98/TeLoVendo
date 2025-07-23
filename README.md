@@ -16,7 +16,7 @@ El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave, ahora poten
 -   **Catálogo de Productos Dinámico:** Un listado completo de nuestra electrónica reacondicionada. Los productos se cargan **dinámicamente desde un arreglo de JavaScript**, facilitando su gestión. Está organizado por categorías e implementado con **Cards de Bootstrap**. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
 -   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un **Modal de Bootstrap** que muestra:
     * Una imagen ampliada del producto.
-    * Su nombre, precio, código y una descripción detallada.
+    * Su nombre, precio + IVA, código y una descripción detallada.
     * Un **selector de cantidad** (`input type="number"`) que permite al usuario elegir cuántas unidades desea añadir.
     * Un botón de acción "**Añadir al Carrito**".
 -   **Carrito de Compras y Totalizador Avanzado:**
