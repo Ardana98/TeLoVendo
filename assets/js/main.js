@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearCartButton = document.getElementById('clearCartButton');
     const IVA_RATE = 0.19; // 19% de IVA
     const DESPATCH_CHARGE_RATE = 0.05; // 5% de cargo por despacho
+    const DESPATCH_CHARGE_THRESHOLD = 100000; // Umbral de $100.000 para el cargo por despacho
 
     // Función para guardar el carrito en localStorage
     function saveCart() {
@@ -377,15 +378,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-        const netTotal = subtotal; // El subtotal es el neto antes de IVA y despacho
+        const netTotal = subtotal; // El subtotal es el neto antes de IVA
         const ivaAmount = netTotal * IVA_RATE;
-        const despatchCharge = netTotal * DESPATCH_CHARGE_RATE;
-        const finalTotal = netTotal + ivaAmount + despatchCharge;
+        const subtotalIVAIncluded = netTotal + ivaAmount; // Valor total IVA incluido
+
+        let despatchCharge = 0;
+        // Solo aplicar cargo por despacho si el valor total (IVA incluido) es menor a $100.000
+        if (subtotalIVAIncluded < DESPATCH_CHARGE_THRESHOLD) {
+            despatchCharge = subtotalIVAIncluded * DESPATCH_CHARGE_RATE;
+        }
+        
+        const finalTotal = subtotalIVAIncluded + despatchCharge;
 
 
         cartSummaryDetails.innerHTML = `
             <div class="d-flex justify-content-between mb-1">
-                <span>Subtotal:</span>
+                <span>Subtotal (Neto):</span>
                 <span class="fw-bold">$${netTotal.toLocaleString('es-CL')}</span>
             </div>
             <div class="d-flex justify-content-between mb-1">
@@ -393,11 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="fw-bold">$${ivaAmount.toLocaleString('es-CL')}</span>
             </div>
             <div class="d-flex justify-content-between mb-1">
+                <span>Subtotal (IVA Incluido):</span>
+                <span class="fw-bold">$${subtotalIVAIncluded.toLocaleString('es-CL')}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
                 <span>Cargo por Despacho (5%):</span>
                 <span class="fw-bold">$${despatchCharge.toLocaleString('es-CL')}</span>
             </div>
             <div class="d-flex justify-content-between fs-5 fw-bold mt-2 pt-2 border-top">
-                <span>Total:</span>
+                <span>Total Final:</span>
                 <span>$${finalTotal.toLocaleString('es-CL')}</span>
             </div>
         `;
