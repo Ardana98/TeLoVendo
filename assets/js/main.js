@@ -8,7 +8,7 @@ const products = [
         code: "IPH13",
         name: "iPhone 13",
         description: "Potente rendimiento con chip A15 Bionic, sistema de cámara dual avanzado y pantalla Super Retina XDR.",
-        price: 599990,
+        price: 599990 ,
         imageSrc: "assets/img/i13.jpg",
         category: "celulares"
     },
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         style="max-width: 200px; height: 180px; object-fit: contain;">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text text-primary fw-bold fs-5">$${product.price.toLocaleString('es-CL')}</p>
+                        <p class="card-text text-info fw-bold fs-5">$${product.price.toLocaleString('es-CL')}</p>
                         <button class="btn btn-primary mt-auto" data-bs-toggle="modal"
                             data-bs-target="#productDetailModal" data-product-id="${product.id}">Ver Detalle</button>
                     </div>
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const specsList = [
                         `<strong>Código:</strong> ${product.code}`,
                         `<strong>Categoría:</strong> ${product.category.charAt(0).toUpperCase() + product.category.slice(1)}`,
-                        `<strong>Condición:</strong> Nuevo`
+                        `<strong>Condición:</strong> Reacondicionado`
                     ];
                     specsList.forEach(spec => {
                         const li = document.createElement('li');
@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>Cargo por Despacho (5%):</span>
                 <span class="fw-bold">$${despatchCharge.toLocaleString('es-CL')}</span>
             </div>
-            <div class="d-flex justify-content-between fs-5 fw-bold mt-2 pt-2 border-top">
+            <div class="d-flex justify-content-between fs-5 fw-bold mt-2 pt-2 border-top bg-success">
                 <span>Total Final:</span>
                 <span>$${finalTotal.toLocaleString('es-CL')}</span>
             </div>
