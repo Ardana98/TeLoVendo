@@ -13,17 +13,22 @@ Este proyecto ha sido desarrollado como parte de un entregable de Front-End, dem
 El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave, ahora potenciadas por **Bootstrap 5.3.7** y lógica avanzada de JavaScript:
 
 -   **Página Principal (Inicio):** Una bienvenida atractiva con un banner que destaca ofertas y **Carousel de imágenes (implementado con Bootstrap)** para la sección de "Novedades y Destacados" mostrando productos populares.
+
 -   **Catálogo de Productos Dinámico:** Un listado completo de nuestra electrónica reacondicionada. Los productos se cargan **dinámicamente desde un arreglo de JavaScript**, facilitando su gestión. Está organizado por categorías e implementado con **Cards de Bootstrap**. Incluye una **funcionalidad de filtrado** interactiva para que los usuarios puedan explorar productos específicos (Celulares, Tablets, Laptops, Smartwatch).
--   **Ficha de Detalle de Producto (Modal):** Al hacer clic en "Ver Detalle" en cualquier tarjeta de producto, se abre un **Modal de Bootstrap** que muestra:
+
+-   **Ficha de Detalle de Producto (Modal):** Al hacer clic en `"Ver Detalle"` en cualquier tarjeta de producto, se abre un **Modal de Bootstrap** que muestra:
     * Una imagen ampliada del producto.
     * Su nombre, precio + IVA, código y una descripción detallada.
     * Un **selector de cantidad** (`input type="number"`) que permite al usuario elegir cuántas unidades desea añadir.
     * Un botón de acción "**Añadir al Carrito**".
+
 -   **Carrito de Compras y Totalizador Avanzado:**
     * Permite a los usuarios **añadir productos al carrito** desde el modal de detalle.
-    * **Visualiza la lista de productos seleccionados** en tiempo real, indicando su nombre, cantidad y valor total individual.
+    * **Visualiza la lista de productos seleccionados** en tiempo real, indicando su nombre, código, cantidad y valor total individual.
     * Permite **ajustar la cantidad** de un producto directamente en la lista del carrito y **eliminar productos** de la lista.
+    * Incluye botones para **confirmar compra** y **vaciar completamente el carrito**.
     * Incluye un **resumen "totalizador"** detallado que muestra:
+        * **Detalle de los productos**: nombre, código y cantidad
         * **Valor Neto** (Subtotal).
         * **Cálculo de IVA (19%)**.
         * **Subtotal (IVA Incluido)**.
@@ -31,9 +36,13 @@ El portal "Te lo Vendo" ofrece las siguientes funcionalidades clave, ahora poten
         * **Total Final de la Compra**.
     * Todas las **cifras monetarias se muestran redondeadas** a números enteros para una lectura clara y profesional.
     * El estado del carrito se **persiste utilizando `localStorage`**, lo que significa que los productos permanecerán en el carrito incluso si el usuario recarga la página o cierra el navegador.
-    * Incluye un botón para **vaciar completamente el carrito**.
+    * **Proceso de Checkout y Boleta:** Al presionar `"confirmar Compra"`, se abre un **modal de Bootstrap** con un formulario para ingresar datos de despacho `(nombre,correo, dirección, comuna, región)`. El formulario incluye **validación en tiempo real** de campos requeridos. Tras el envío exitoso, se simula la **generación de una boleta electrónica** `(visible en la consola del navegador)`, que incluye el detalle de los productos (nombre, código,cantidad), precios y datos del cliente. Se muestra un **modal de confirmación de éxito** y el carrito se vacía.
+    
+
 -   **Página "Acerca del Proyecto":** Una sección dedicada a explicar los objetivos de "Te lo Vendo" y presentar a los responsables detrás de este portal.
+
 -   **Formulario de Contacto:** Una interfaz clara y funcional para que los usuarios puedan enviar consultas o comentarios directamente al equipo de "Te lo Vendo". **Al llenar todos los campos y presionar "enviar el formulario, un Modal de Bootstrap** confirma el "guardado exitosamente" del mensaje.
+
 -   **Navegación Intuitiva y Responsiva:** Un menú principal claro en la parte superior, implementado con el **componente Navbar de Bootstrap**.
     * **`Menú Hamburguesa`**: Para entornos móviles y tablets, la Navbar incorpora el práctico "menú hamburguesa" de Bootstrap para una navegación fluida.
     * **`Barra de Navegación Fija`**: El menú principal permanece anclado en la parte superior de la ventana (`fixed-top`), permitiendo a los usuarios una navegación constante.

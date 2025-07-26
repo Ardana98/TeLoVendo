@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
 
@@ -58,24 +59,32 @@
                 </div>
 
                 <div class="products__grid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="productsGrid">
+                    </div>
+            </div>
+        </section>
 
-                </div>
-                <div class="cart-summary-section mt-5 p-4 border rounded shadow-sm bg-light">
-                    <h2 class="text-center mb-4">Tu Carrito de Compras</h2>
-                    <div id="cartItemsList">
-                        <p class="text-center text-muted" id="emptyCartMessage">Tu carrito está vacío.</p>
-                    </div>
-                    <hr>
-                    <div id="cartSummaryDetails">
-                    </div>
-                    <div class="text-center mt-3">
-                        <button class="btn btn-danger" id="clearCartButton" style="display:none;">Vaciar
-                            Carrito</button>
+        <section class="container mt-5 pt-5" id="cart-summary-section">
+            <h2 class="text-center mb-4">Tu Carrito de Compras</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p id="emptyCartMessage" class="text-center text-muted">Tu carrito está vacío. ¡Añade productos!</p>
+                            <div id="cartItemsList">
+                                </div>
+                            <div id="cartSummaryDetails" class="mt-4">
+                                </div>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-danger" id="clearCartButton" style="display:none;">Vaciar Carrito</button>
+                                <button class="btn btn-success ms-2" id="confirmPurchaseButton" style="display:none;">Confirmar Compra</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
     <footer class="main-footer">
         <div class="container text-center">
             <div class="footer-info mb-3">
@@ -128,6 +137,86 @@
                             <button class="btn btn-primary mt-3 product-modal-add-to-cart">Añadir al Carrito</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Confirmar Compra y Datos de Despacho</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="checkoutForm">
+                        <p class="mb-3 text-muted">Por favor, ingresa tus datos para el envío de la boleta y el despacho.</p>
+
+                        <div class="mb-3">
+                            <label for="clientEmail" class="form-label">Correo Electrónico <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="clientEmail" placeholder="tu@ejemplo.com" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa un correo electrónico válido.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="clientName" class="form-label">Nombre de quien recibe <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="clientName" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa el nombre de quien recibe.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="shippingAddress" class="form-label">Dirección <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="shippingAddress" placeholder="Calle, Número, Depto/Casa" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa la dirección de despacho.
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="shippingComuna" class="form-label">Comuna <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shippingComuna" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa la comuna.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="shippingRegion" class="form-label">Región <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="shippingRegion" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa la región.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg mt-3">Enviar Boleta y Confirmar Compra</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="successSendModal" tabindex="-1" aria-labelledby="successSendModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="successSendModalLabel">¡Compra Confirmada!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="fs-4 text-success"><i class="bi bi-check-circle-fill"></i></p>
+                    <p class="fs-5">Tu boleta ha sido generada y enviada a <strong id="sentEmailDisplay"></strong>.</p>
+                    <p>¡Gracias por tu compra!</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
                 </div>
             </div>
         </div>

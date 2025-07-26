@@ -171,9 +171,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartSummaryDetails = document.getElementById('cartSummaryDetails');
     const emptyCartMessage = document.getElementById('emptyCartMessage');
     const clearCartButton = document.getElementById('clearCartButton');
+    const confirmPurchaseButton = document.getElementById('confirmPurchaseButton'); // Referencia al nuevo botón "Confirmar Compra"
+    const cartSummarySection = document.getElementById('cart-summary-section'); // Referencia a la sección principal del carrito
     const IVA_RATE = 0.19; // 19% de IVA
     const DESPATCH_CHARGE_RATE = 0.05; // 5% de cargo por despacho
     const DESPATCH_CHARGE_THRESHOLD = 100000; // Umbral de $100.000 para el cargo por despacho
+
+    // --- Referencias a elementos del modal de Checkout y Éxito ---
+    const checkoutModalElement = document.getElementById('checkoutModal');
+    const checkoutModal = checkoutModalElement ? new bootstrap.Modal(checkoutModalElement) : null;
+    const checkoutForm = document.getElementById('checkoutForm');
+    const successSendModalElement = document.getElementById('successSendModal');
+    const successSendModal = successSendModalElement ? new bootstrap.Modal(successSendModalElement) : null;
+    const sentEmailDisplay = document.getElementById('sentEmailDisplay');
+
 
     // Función para guardar el carrito en localStorage
     function saveCart() {
@@ -273,16 +284,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Lógica del Formulario de Contacto (contacto.html) ---
     const contactForm = document.getElementById('contactForm');
-    const successModalElement = document.getElementById('successModal');
-
-    if (contactForm && successModalElement) {
-        const successModal = new bootstrap.Modal(successModalElement);
+    // Ya tengo successModalElement y su instancia para el checkout, hay que reusar  el mismo id o crear uno nuevo si es diferente en contacto.html
+    // successModalElement también es el modal de éxito en contacto.html
+    if (contactForm && successSendModalElement) { // Uso successSendModalElement para referirme al modal de éxito general
         contactForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            successModal.show();
+            const contactSuccessModal = new bootstrap.Modal(successSendModalElement); // Creamos una nueva instancia solo para contacto
+            contactSuccessModal.show();
             contactForm.reset();
         });
     }
+
 
     // --- Funciones del Carrito ---
 
@@ -328,19 +340,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Renderizar los elementos del carrito y el totalizador
     function updateTotalizerDisplay() {
-        if (!cartItemsList || !cartSummaryDetails) return; // Salir si los elementos no existen (ej. no estamos en catalogo.html)
-
-        cartItemsList.innerHTML = ''; // Limpiar lista de ítems
-        cartSummaryDetails.innerHTML = ''; // Limpiar resumen de totales
-
-        if (cart.length === 0) {
-            emptyCartMessage.style.display = 'block'; // Mostrar mensaje de carrito vacío
-            clearCartButton.style.display = 'none'; // Ocultar botón de vaciar carrito
+        // Verifica que todos los elementos DOM necesarios existan.
+        // Si falta alguno, probablemente no estamos en catalogo.html o hay un problema con los IDs.
+        if (!cartItemsList || !cartSummaryDetails || !emptyCartMessage || !clearCartButton || !confirmPurchaseButton || !cartSummarySection) {
+            console.error("Alguno de los elementos del DOM del carrito no fue encontrado. Asegúrate de estar en catalogo.html y que los IDs sean correctos.");
             return;
         }
 
-        emptyCartMessage.style.display = 'none'; // Ocultar mensaje de carrito vacío
-        clearCartButton.style.display = 'block'; // Mostrar botón de vaciar carrito
+        cartItemsList.innerHTML = ''; // Limpiar lista de ítems del carrito
+        cartSummaryDetails.innerHTML = ''; // Limpiar resumen de totales
+
+        if (cart.length === 0) {
+            cartSummarySection.style.display = 'none'; // Oculta toda la sección del carrito
+            emptyCartMessage.style.display = 'block'; // Muestra mensaje de carrito vacío
+            clearCartButton.style.display = 'none'; // Oculta botón de vaciar carrito
+            confirmPurchaseButton.style.display = 'none'; // Oculta el botón de confirmar compra
+            return; // Salir de la función si el carrito está vacío
+        }
+
+        // Si hay ítems en el carrito
+        cartSummarySection.style.display = 'block'; // Muestra toda la sección del carrito
+        emptyCartMessage.style.display = 'none'; // Oculta mensaje de carrito vacío
+        clearCartButton.style.display = 'inline-block'; // Muestra botón de vaciar carrito
+        confirmPurchaseButton.style.display = 'inline-block'; // Muestra el botón de confirmar compra
 
 
         let subtotal = 0;
@@ -351,8 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'mb-2', 'py-2', 'border-bottom');
             itemDiv.innerHTML = `
-                <span>${item.name} (x${item.quantity})</span>
-                <div class="d-flex align-items-center">
+                <span>${item.name} (${item.code} x${item.quantity})</span> <div class="d-flex align-items-center">
                     <input type="number" class="form-control form-control-sm me-2 cart-item-quantity" data-product-id="${item.id}" value="${item.quantity}" min="1" max="99" style="width: 70px;">
                     <span class="fw-bold me-2">$${Math.round(itemTotal).toLocaleString('es-CL')}</span>
                     <button class="btn btn-sm btn-outline-danger remove-from-cart-btn" data-product-id="${item.id}">&times;</button>
@@ -436,6 +457,110 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para el botón "Vaciar Carrito"
     if (clearCartButton) {
         clearCartButton.addEventListener('click', clearCart);
+    }
+
+    // Listener para el botón "Confirmar Compra" (abre el modal de checkout)
+    if (confirmPurchaseButton) {
+        confirmPurchaseButton.addEventListener('click', () => {
+            if (checkoutModal) { // Asegurarse de que el modal de checkout exista
+                checkoutModal.show();
+
+                // Limpiar los campos del formulario cada vez que se abre el modal
+                if (checkoutForm) {
+                    checkoutForm.reset(); // Resetea todos los campos
+                    checkoutForm.classList.remove('was-validated'); // Quita las clases de validación
+                }
+            }
+        });
+    }
+
+    // --- Lógica para el formulario de Checkout y generación de boleta ---
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Evitar el envío por defecto del formulario
+
+            // Validar el formulario con las clases de Bootstrap
+            if (!checkoutForm.checkValidity()) {
+                event.stopPropagation(); // Detener la propagación del evento si no es válido
+                checkoutForm.classList.add('was-validated'); // Mostrar feedback de validación
+                return; // Salir de la función si la validación falla
+            }
+
+            checkoutForm.classList.add('was-validated'); // Asegurar que se muestre como validado si pasa
+
+            // Recopilar datos del cliente
+            const clientEmail = document.getElementById('clientEmail').value;
+            const clientName = document.getElementById('clientName').value;
+            const shippingAddress = document.getElementById('shippingAddress').value;
+            const shippingComuna = document.getElementById('shippingComuna').value;
+            const shippingRegion = document.getElementById('shippingRegion').value;
+
+            // Calcular totales para la boleta (reusando la lógica de updateTotalizerDisplay)
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+            });
+
+            const netTotal = Math.round(subtotal);
+            const ivaAmount = Math.round(netTotal * IVA_RATE);
+            const subtotalIVAIncluded = netTotal + ivaAmount;
+
+            let despatchCharge = 0;
+            if (subtotalIVAIncluded < DESPATCH_CHARGE_THRESHOLD) {
+                despatchCharge = Math.round(subtotalIVAIncluded * DESPATCH_CHARGE_RATE);
+            }
+            const finalTotal = Math.round(subtotalIVAIncluded + despatchCharge);
+
+            // Generar contenido de la boleta (simulada)
+            let boletaContent = `
+                <h4 class="text-center">Boleta Electrónica</h4>
+                <p><strong>Fecha:</strong> ${new Date().toLocaleDateString('es-CL')}</p>
+                <p><strong>Hora:</strong> ${new Date().toLocaleTimeString('es-CL')}</p>
+                <hr>
+                <h5>Detalle de Productos:</h5>
+                <ul class="list-unstyled">
+            `;
+
+            cart.forEach(item => {
+                boletaContent += `<li>${item.name} (${item.code} x${item.quantity}) - $${(item.price * item.quantity).toLocaleString('es-CL')}</li>`; // AÑADIDO: Código del producto
+            });
+
+            boletaContent += `
+                </ul>
+                <hr>
+                <p>Subtotal (Neto): <strong>$${netTotal.toLocaleString('es-CL')}</strong></p>
+                <p>IVA (19%): <strong>$${ivaAmount.toLocaleString('es-CL')}</strong></p>
+                <p>Subtotal (IVA Incluido): <strong>$${subtotalIVAIncluded.toLocaleString('es-CL')}</strong></p>
+                <p>Cargo por Despacho (5%): <strong>$${despatchCharge.toLocaleString('es-CL')}</strong></p>
+                <h5 class="text-end">Total Final: <strong>$${finalTotal.toLocaleString('es-CL')}</strong></h5>
+                <hr>
+                <h5>Datos de Despacho:</h5>
+                <p><strong>Cliente:</strong> ${clientName}</p>
+                <p><strong>Correo:</strong> ${clientEmail}</p>
+                <p><strong>Dirección:</strong> ${shippingAddress}, ${shippingComuna}, ${shippingRegion}</p>
+                <p class="text-muted">Esta es una boleta simulada para propósitos de demostración.</p>
+            `;
+
+            // Mostrar el contenido de la boleta en algún lugar si se desea, por ejemplo en la consola o en otro modal.
+            // Por ahora, sirve el modal de éxito general.
+            console.log("Contenido de la Boleta Generada:\n", boletaContent);
+
+            // Actualizar el correo en el modal de éxito y mostrarlo
+            if (sentEmailDisplay) {
+                sentEmailDisplay.textContent = clientEmail;
+            }
+            if (successSendModal) {
+                successSendModal.show();
+            }
+
+            // Ocultar el modal de checkout
+            if (checkoutModal) {
+                checkoutModal.hide();
+            }
+
+            // Limpiar el carrito después de una compra exitosa
+            clearCart();
+        });
     }
 
 
